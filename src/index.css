@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.titleDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#title {
+  width: 250px;
+  height: 30px;
+  outline: none;
+}
+
+.tagDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#oneTag {
+  width: 250px;
+  height: 30px;
+  outline: none;
+}
+
+.linkDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#link {
+  width: 250px;
+  height: 30px;
+  outline: none;
+}
+
+.btn {
+  width: 250px;
+  height: 30px;
+  margin-top: 20px;
+}
