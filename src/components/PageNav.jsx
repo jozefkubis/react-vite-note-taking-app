@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import "./PageNav.css"
 
 export const PageNav = () => {
   return (
