@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
 function NewFolder() {
@@ -7,9 +8,17 @@ function NewFolder() {
     setTitle /* folderName, setFolderName, link, setLink */,
   } = useNoteTakingProvider()
 
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    submitForm(e)
+    navigate("/")
+  }
+
   return (
     <div className="newFolder-container">
-      <form className="form-newFolder" onSubmit={submitForm}>
+      <form className="form-newFolder" onSubmit={handleSubmit}>
         <div className="titleDiv">
           <label htmlFor="title">New Folder Name</label>
           <input
