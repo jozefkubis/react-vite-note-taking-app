@@ -15,7 +15,7 @@ function NewNote() {
     <div className="newFolder-container">
       <form className="form-newFolder" onSubmit={noteSubmitForm}>
         <div className="titleDiv">
-          <label htmlFor="noteTitele">New Note Name</label>
+          <label htmlFor="noteTitle">New Note Name</label>
           <input
             type="text"
             id="title"
