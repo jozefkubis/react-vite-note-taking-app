@@ -6,7 +6,7 @@ export const PageNav = () => {
     <nav className="page-nav">
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Notes</NavLink>
         </li>
         <li>
           <NavLink to="/inputs">Create</NavLink>

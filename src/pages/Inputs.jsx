@@ -1,16 +1,8 @@
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
 function Inputs() {
-  const {
-    submitForm,
-    title,
-    setTitle,
-    oneTag,
-    setOneTag,
-    link,
-    setLink,
-    tags,
-  } = useNoteTakingProvider()
+  const { submitForm, title, setTitle, oneTag, setOneTag, link, setLink } =
+    useNoteTakingProvider()
 
   return (
     <div className="inputs-container">
@@ -26,7 +18,7 @@ function Inputs() {
           />
         </div>
         <div className="tagDiv">
-          <label htmlFor="oneTag">Tags</label>
+          <label htmlFor="oneTag">Body</label>
           <textarea
             type="text"
             id="oneTag"
@@ -46,7 +38,7 @@ function Inputs() {
           />
         </div>
         <button className="btn" type="submit">
-          Add
+          Save
         </button>
       </form>
     </div>
