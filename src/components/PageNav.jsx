@@ -9,7 +9,7 @@ export const PageNav = () => {
           <NavLink to="/">All Folders</NavLink>
         </li>
         <li>
-          <NavLink to="/newFolder">Create New Folder</NavLink>
+          <NavLink to="/newFolder">Create 🆕 Folder</NavLink>
         </li>
       </ul>
     </nav>
