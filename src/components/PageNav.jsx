@@ -6,10 +6,10 @@ export const PageNav = () => {
     <nav className="page-nav">
       <ul>
         <li>
-          <NavLink to="/">Notes</NavLink>
+          <NavLink to="/">All Folders</NavLink>
         </li>
         <li>
-          <NavLink to="/inputs">Create</NavLink>
+          <NavLink to="/newFolder">Create New Folder</NavLink>
         </li>
       </ul>
     </nav>

@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.inputs-container {
+.newFolder-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,13 +24,13 @@
   outline: none;
 }
 
-.tagDiv {
+/* .folderNameDiv {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-#oneTag {
+#folderName {
   width: 250px;
   height: 30px;
   outline: none;
@@ -46,7 +46,7 @@
   width: 250px;
   height: 30px;
   outline: none;
-}
+} */
 
 .btn {
   width: 250px;

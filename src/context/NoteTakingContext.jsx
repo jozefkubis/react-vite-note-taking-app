@@ -5,23 +5,23 @@ const NoteTakingContext = createContext()
 
 function NoteTakingProvider({ children }) {
   const [title, setTitle] = useState("")
-  const [oneTag, setOneTag] = useState("")
+  const [folderName, setFolderName] = useState("")
   const [link, setLink] = useState("")
-  const [tags, setTags] = useState([])
+  const [folders, setFolders] = useState([])
 
   function submitForm(e) {
     e.preventDefault()
 
-    const newTag = {
+    const newFolder = {
       id: Math.floor(Math.random() * 1000),
       name: title,
-      tag: oneTag,
+      tag: folderName,
       link: link,
     }
 
-    setTags([...tags, newTag])
+    setFolders([...folders, newFolder])
     setTitle("")
-    setOneTag("")
+    setFolderName("")
     setLink("")
   }
 
@@ -30,12 +30,12 @@ function NoteTakingProvider({ children }) {
       value={{
         title,
         setTitle,
-        oneTag,
-        setOneTag,
+        folderName,
+        setFolderName,
         link,
         setLink,
-        tags,
-        setTags,
+        folders,
+        setFolders,
         submitForm,
       }}
     >

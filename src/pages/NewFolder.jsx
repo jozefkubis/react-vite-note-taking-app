@@ -1,14 +1,17 @@
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
-function Inputs() {
-  const { submitForm, title, setTitle, oneTag, setOneTag, link, setLink } =
-    useNoteTakingProvider()
+function NewFolder() {
+  const {
+    submitForm,
+    title,
+    setTitle /* folderName, setFolderName, link, setLink */,
+  } = useNoteTakingProvider()
 
   return (
-    <div className="inputs-container">
-      <form className="form-inputs" onSubmit={submitForm}>
+    <div className="newFolder-container">
+      <form className="form-newFolder" onSubmit={submitForm}>
         <div className="titleDiv">
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">New Folder Name</label>
           <input
             type="text"
             id="title"
@@ -17,14 +20,14 @@ function Inputs() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="tagDiv">
-          <label htmlFor="oneTag">Body</label>
+        {/* <div className="folderNameDiv">
+          <label htmlFor="folderName">Body</label>
           <textarea
             type="text"
-            id="oneTag"
-            name="oneTag"
-            value={oneTag}
-            onChange={(e) => setOneTag(e.target.value)}
+            id="folderName"
+            name="folderName"
+            value={folderName}
+            onChange={(e) => setFolderName(e.target.value)}
           />
         </div>
         <div className="linkDiv">
@@ -36,7 +39,7 @@ function Inputs() {
             value={link}
             onChange={(e) => setLink(e.target.value)}
           />
-        </div>
+        </div> */}
         <button className="btn" type="submit">
           Save
         </button>
@@ -45,4 +48,4 @@ function Inputs() {
   )
 }
 
-export default Inputs
+export default NewFolder
