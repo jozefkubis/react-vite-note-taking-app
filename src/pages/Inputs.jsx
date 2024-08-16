@@ -1,28 +1,16 @@
-import { useState } from "react"
+import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
 function Inputs() {
-  const [title, setTitle] = useState("")
-  const [oneTag, setOneTag] = useState("")
-  const [link, setLink] = useState("")
-  const [tags, setTags] = useState([])
-
-  function submitForm(e) {
-    e.preventDefault()
-
-    const newTag = {
-      id: Math.floor(Math.random() * 1000),
-      name: title,
-      tag: oneTag,
-      link: link,
-    }
-
-    setTags([...tags, newTag])
-    setTitle("")
-    setOneTag("")
-    setLink("")
-  }
-
-  console.log(tags)
+  const {
+    submitForm,
+    title,
+    setTitle,
+    oneTag,
+    setOneTag,
+    link,
+    setLink,
+    tags,
+  } = useNoteTakingProvider()
 
   return (
     <div className="inputs-container">
@@ -61,20 +49,6 @@ function Inputs() {
           Add
         </button>
       </form>
-
-      <div>
-        {tags
-          ? tags.map((tag) => (
-              <div key={tag.id}>
-                <h4>{tag.name}</h4>
-                <p>{tag.tag}</p>
-                <a href={`https://${tag.link}`} target="_blank">
-                  {tag.link}
-                </a>
-              </div>
-            ))
-          : null}
-      </div>
     </div>
   )
 }
