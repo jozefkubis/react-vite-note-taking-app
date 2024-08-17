@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
-import Notes from "./Notes"
 
 function HomePage() {
-  const { folders } = useNoteTakingProvider()
+  const { folders, notes } = useNoteTakingProvider()
 
   const navigate = useNavigate()
 
@@ -14,10 +13,10 @@ function HomePage() {
           ? folders.map((folder) => (
               <div key={folder.id}>
                 <h4>{folder.name}</h4>
+                <p>{notes.length}</p>
               </div>
             ))
           : null}
-        <Notes />
       </div>
     </>
   )

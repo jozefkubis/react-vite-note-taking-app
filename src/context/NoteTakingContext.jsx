@@ -11,7 +11,6 @@ function NoteTakingProvider({ children }) {
   const [noteTitle, setNoteTitle] = useState("")
   const [noteText, setNoteText] = useState("")
   const [notes, setNotes] = useState([])
-  const [currentFolderId, setCurrentFolderId] = useState(null)
 
   function submitForm(e) {
     e.preventDefault()
@@ -23,7 +22,6 @@ function NoteTakingProvider({ children }) {
 
     setFolders([...folders, newFolder])
     setTitle("")
-    setCurrentFolderId(newFolder.id)
 
     console.log(newFolder)
   }
@@ -32,7 +30,7 @@ function NoteTakingProvider({ children }) {
     e.preventDefault()
 
     const newNote = {
-      id: currentFolderId,
+      id: Math.floor(Math.random() * 1000),
       name: noteTitle,
       text: noteText,
       link: link,

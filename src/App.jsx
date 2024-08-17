@@ -3,6 +3,7 @@ import AppLayout from "./components/AppLayout"
 import NewFolder from "./pages/NewFolder"
 import FolderList from "./pages/FolderList"
 import NewNote from "./pages/NewNote"
+import Notes from "./pages/Notes"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route index element={<FolderList />} />
         <Route path="/newFolder" element={<NewFolder />} />
         <Route path="/newNote" element={<NewNote />} />
+        <Route path="/notes" element={<Notes />} />
       </Route>
     </Routes>
   )
