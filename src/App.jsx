@@ -12,7 +12,6 @@ function App() {
         <Route index element={<FolderList />} />
         <Route path="/newFolder" element={<NewFolder />} />
         <Route path="/newNote" element={<NewNote />} />
-        <Route path="/notes" element={<Notes />} />
       </Route>
     </Routes>
   )

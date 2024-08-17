@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
-function HomePage() {
+function FolderList() {
   const { folders, notes } = useNoteTakingProvider()
 
   const navigate = useNavigate()
@@ -22,4 +22,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default FolderList

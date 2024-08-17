@@ -1,6 +1,6 @@
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
-export default function Notes() {
+function Notes() {
   const { notes } = useNoteTakingProvider()
 
   return (
@@ -19,3 +19,5 @@ export default function Notes() {
     </div>
   )
 }
+
+export default Notes
