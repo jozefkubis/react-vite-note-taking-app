@@ -3,7 +3,6 @@ import AppLayout from "./components/AppLayout"
 import NewFolder from "./pages/NewFolder"
 import FolderList from "./pages/FolderList"
 import NewNote from "./pages/NewNote"
-import Notes from "./pages/Notes"
 
 function App() {
   return (
