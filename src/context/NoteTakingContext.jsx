@@ -11,6 +11,7 @@ function NoteTakingProvider({ children }) {
   const [noteTitle, setNoteTitle] = useState("")
   const [noteText, setNoteText] = useState("")
   const [notes, setNotes] = useState([])
+  const [selectedFolder, setSelectedFolder] = useState(null)
 
   function submitForm(e) {
     e.preventDefault()
@@ -20,10 +21,8 @@ function NoteTakingProvider({ children }) {
       name: title,
     }
 
-    setFolders([...folders, newFolder])
+    setFolders((prevFolders) => [...prevFolders, newFolder])
     setTitle("")
-
-    console.log(newFolder)
   }
 
   function noteSubmitForm(e) {
@@ -34,14 +33,15 @@ function NoteTakingProvider({ children }) {
       name: noteTitle,
       text: noteText,
       link: link,
+      folderId: selectedFolder,
     }
 
-    setNotes([...notes, newNote])
+    setNotes((prevNotes) => [...prevNotes, newNote])
     setNoteTitle("")
     setNoteText("")
     setLink("")
 
-    console.log(newNote)
+    console.log(notes)
   }
 
   return (
@@ -63,6 +63,8 @@ function NoteTakingProvider({ children }) {
         notes,
         setNotes,
         noteSubmitForm,
+        selectedFolder,
+        setSelectedFolder,
       }}
     >
       {children}

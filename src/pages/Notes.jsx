@@ -1,21 +1,43 @@
+import { useNavigate, useParams } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 
 function Notes() {
   const { notes } = useNoteTakingProvider()
+  const { noteId } = useParams()
+
+  const filteredNotes = notes.filter(
+    (note) => note.folderId === parseInt(noteId)
+  )
+
+  const navigate = useNavigate()
+
+  function handleClick() {
+    navigate("/")
+  }
+
+  function clickToNewNote() {
+    navigate("/newNote")
+  }
 
   return (
-    <div>
-      {notes
-        ? notes.map((note) => (
-            <div key={note.id}>
-              <h4>{note.name}</h4>
-              <p>{note.text}</p>
-              <a href={`https://${note.link}`} target="_blank">
-                {note.link}
-              </a>
-            </div>
-          ))
-        : null}
+    <div className="notesDiv">
+      <div>
+        {filteredNotes.length > 0
+          ? filteredNotes.map((note) => (
+              <div key={note.id}>
+                <h4>{note.name}</h4>
+                <p>{note.text}</p>
+                <a href={`https://${note.link}`} target="_blank">
+                  {note.link}
+                </a>
+              </div>
+            ))
+          : null}
+      </div>
+
+      <button onClick={handleClick}>Back to Folders</button>
+      <br />
+      <button onClick={clickToNewNote}>New Note</button>
     </div>
   )
 }
