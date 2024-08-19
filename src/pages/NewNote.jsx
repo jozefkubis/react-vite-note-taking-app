@@ -20,6 +20,8 @@ function NewNote() {
     (folder) => folder.id === selectedFolder
   )
 
+  console.log(folders)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     noteSubmitForm(e)

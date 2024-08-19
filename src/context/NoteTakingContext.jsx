@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 import PropTypes from "prop-types"
 
 const NoteTakingContext = createContext()
 
 function NoteTakingProvider({ children }) {
-  const [title, setTitle] = useState("")
+  const [folderTitle, setFolderTitle] = useState("")
   const [folderName, setFolderName] = useState("")
   const [link, setLink] = useState("")
   const [folders, setFolders] = useState([])
@@ -13,32 +13,18 @@ function NoteTakingProvider({ children }) {
   const [notes, setNotes] = useState([])
   const [selectedFolder, setSelectedFolder] = useState(null)
 
-  // useEffect(() => {
-  //   const loadLocalStorage = () => {
-  //     const savedFolders = localStorage.getItem("folders")
-  //     const savedNotes = localStorage.getItem("notes")
-
-  //     if (savedFolders) {
-  //       setFolders(JSON.parse(savedFolders))
-  //     }
-
-  //     if (savedNotes) {
-  //       setNotes(JSON.parse(savedNotes))
-  //     }
-  //   }
-  //   loadLocalStorage()
-  // }, [])
-
-  function submitForm(e) {
+  function folderSubmitForm(e) {
     e.preventDefault()
 
     const newFolder = {
       id: Math.floor(Math.random() * 1000),
-      name: title,
+      name: folderTitle,
     }
 
+    console.log(newFolder.id)
+
     localStorage.setItem("folders", JSON.stringify([...folders, newFolder]))
-    setTitle("")
+    setFolderTitle("")
   }
 
   function noteSubmitForm(e) {
@@ -57,21 +43,22 @@ function NoteTakingProvider({ children }) {
     setNoteText("")
     setLink("")
 
-    console.log(notes)
+    console.log(newNote.folderId)
+    console.log(newNote.id)
   }
 
   return (
     <NoteTakingContext.Provider
       value={{
-        title,
-        setTitle,
+        folderTitle,
+        setFolderTitle,
         folderName,
         setFolderName,
         link,
         setLink,
         folders,
         setFolders,
-        submitForm,
+        folderSubmitForm,
         noteTitle,
         setNoteTitle,
         noteText,
