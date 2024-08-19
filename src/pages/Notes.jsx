@@ -21,8 +21,6 @@ function Notes() {
     (note) => note.folderId === parseInt(noteId)
   )
 
-  console.log(noteId)
-
   const navigate = useNavigate()
 
   function handleClick() {

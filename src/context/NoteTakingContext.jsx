@@ -21,8 +21,6 @@ function NoteTakingProvider({ children }) {
       name: folderTitle,
     }
 
-    console.log(newFolder.id)
-
     localStorage.setItem("folders", JSON.stringify([...folders, newFolder]))
     setFolderTitle("")
   }
@@ -42,9 +40,6 @@ function NoteTakingProvider({ children }) {
     setNoteTitle("")
     setNoteText("")
     setLink("")
-
-    console.log(newNote.folderId)
-    console.log(newNote.id)
   }
 
   return (

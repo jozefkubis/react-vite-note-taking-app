@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
+import { useCapitalise } from "../hooks/useCapitalise"
 
 function NewFolder() {
   const { folderSubmitForm, folderTitle, setFolderTitle } =
@@ -22,7 +23,7 @@ function NewFolder() {
             type="text"
             id="title"
             name="folderTitle"
-            value={folderTitle}
+            value={useCapitalise(folderTitle)}
             onChange={(e) => setFolderTitle(e.target.value)}
           />
         </div>

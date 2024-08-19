@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
+import { useCapitalise } from "../hooks/useCapitalise"
 
 function NewNote() {
   const {
@@ -20,8 +21,6 @@ function NewNote() {
     (folder) => folder.id === selectedFolder
   )
 
-  console.log(folders)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     noteSubmitForm(e)
@@ -37,7 +36,7 @@ function NewNote() {
             type="text"
             id="title"
             name="title"
-            value={noteTitle}
+            value={useCapitalise(noteTitle)}
             onChange={(e) => setNoteTitle(e.target.value)}
           />
         </div>

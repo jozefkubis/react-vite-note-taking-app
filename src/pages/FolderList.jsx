@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
+import { useCapitalise } from "../hooks/useCapitalise"
 
 function FolderList() {
   const { folders, notes, setNotes, setSelectedFolder, setFolders } =
