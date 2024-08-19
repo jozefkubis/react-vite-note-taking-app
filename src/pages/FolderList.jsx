@@ -25,6 +25,16 @@ function FolderList() {
     loadLocalStorage()
   }, [setFolders, setNotes])
 
+  function deleteFolder(id) {
+    const newFolders = folders.filter((folder) => folder.id !== id)
+    localStorage.setItem("folders", JSON.stringify(newFolders))
+    setFolders(newFolders)
+
+    const newNotes = notes.filter((note) => note.folderId !== id)
+    localStorage.setItem("notes", JSON.stringify(newNotes))
+    setNotes(newNotes)
+  }
+
   return (
     <>
       <div>
@@ -45,6 +55,12 @@ function FolderList() {
               Num of notes:{" "}
               {notes.filter((note) => note.folderId === folder.id).length}
             </p>
+            <button
+              className="folderDelete"
+              onClick={() => deleteFolder(folder.id)}
+            >
+              ❌
+            </button>
           </div>
         ))}
       </div>

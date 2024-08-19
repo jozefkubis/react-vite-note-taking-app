@@ -31,6 +31,12 @@ function Notes() {
     navigate("/newNote")
   }
 
+  function noteDelete(note) {
+    const newNotes = notes.filter((n) => n.id !== note.id)
+    localStorage.setItem("notes", JSON.stringify(newNotes))
+    setNotes(newNotes)
+  }
+
   return (
     <div className="notesDiv">
       <div>
@@ -42,6 +48,9 @@ function Notes() {
                 <a href={`https://${note.link}`} target="_blank">
                   {note.link}
                 </a>
+                <button className="noteDelete" onClick={() => noteDelete(note)}>
+                  ❌
+                </button>
               </div>
             ))
           : null}
