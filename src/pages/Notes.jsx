@@ -1,9 +1,21 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
+import { useEffect } from "react"
 
 function Notes() {
-  const { notes } = useNoteTakingProvider()
+  const { notes, setNotes } = useNoteTakingProvider()
   const { noteId } = useParams()
+
+  useEffect(() => {
+    const loadLocalStorage = () => {
+      const savedNotes = localStorage.getItem("notes")
+
+      if (savedNotes) {
+        setNotes(JSON.parse(savedNotes))
+      }
+    }
+    loadLocalStorage()
+  }, [setNotes])
 
   const filteredNotes = notes.filter(
     (note) => note.folderId === parseInt(noteId)

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import PropTypes from "prop-types"
 
 const NoteTakingContext = createContext()
@@ -13,6 +13,22 @@ function NoteTakingProvider({ children }) {
   const [notes, setNotes] = useState([])
   const [selectedFolder, setSelectedFolder] = useState(null)
 
+  // useEffect(() => {
+  //   const loadLocalStorage = () => {
+  //     const savedFolders = localStorage.getItem("folders")
+  //     const savedNotes = localStorage.getItem("notes")
+
+  //     if (savedFolders) {
+  //       setFolders(JSON.parse(savedFolders))
+  //     }
+
+  //     if (savedNotes) {
+  //       setNotes(JSON.parse(savedNotes))
+  //     }
+  //   }
+  //   loadLocalStorage()
+  // }, [])
+
   function submitForm(e) {
     e.preventDefault()
 
@@ -21,7 +37,7 @@ function NoteTakingProvider({ children }) {
       name: title,
     }
 
-    setFolders((prevFolders) => [...prevFolders, newFolder])
+    localStorage.setItem("folders", JSON.stringify([...folders, newFolder]))
     setTitle("")
   }
 
@@ -36,7 +52,7 @@ function NoteTakingProvider({ children }) {
       folderId: selectedFolder,
     }
 
-    setNotes((prevNotes) => [...prevNotes, newNote])
+    localStorage.setItem("notes", JSON.stringify([...notes, newNote]))
     setNoteTitle("")
     setNoteText("")
     setLink("")

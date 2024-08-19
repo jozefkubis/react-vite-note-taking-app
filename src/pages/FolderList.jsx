@@ -1,10 +1,29 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
+import { useEffect } from "react"
 
 function FolderList() {
-  const { folders, notes, setSelectedFolder } = useNoteTakingProvider()
+  const { folders, notes, setNotes, setSelectedFolder, setFolders } =
+    useNoteTakingProvider()
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const loadLocalStorage = () => {
+      const savedFolders = localStorage.getItem("folders")
+      const savedNotes = localStorage.getItem("notes")
+
+      if (savedFolders) {
+        setFolders(JSON.parse(savedFolders))
+      }
+
+      if (savedNotes) {
+        setNotes(JSON.parse(savedNotes))
+      }
+    }
+
+    loadLocalStorage()
+  }, [setFolders, setNotes])
 
   return (
     <>
