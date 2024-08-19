@@ -38,10 +38,10 @@ function FolderList() {
   return (
     <>
       <div>
-        {folders.map((folder) => (
+        {folders.map((folder, index) => (
           <div key={folder.id}>
             <h4>
-              {folder.name}{" "}
+              <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
               <span
                 onClick={() => {
                   setSelectedFolder(folder.id)
