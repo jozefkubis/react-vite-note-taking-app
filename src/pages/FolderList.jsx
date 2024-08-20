@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
-import { useCapitalise } from "../hooks/useCapitalise"
 
 function FolderList() {
   const { folders, notes, setNotes, setSelectedFolder, setFolders } =
@@ -52,10 +51,30 @@ function FolderList() {
                 ➕
               </span>
             </h4>
-            <p onClick={() => navigate(`/notes/${folder.id}`)}>
-              Num of notes:{" "}
-              {notes.filter((note) => note.folderId === folder.id).length}
+            <p
+              onClick={() => {
+                if (
+                  notes.filter((note) => note.folderId === folder.id).length > 0
+                ) {
+                  navigate(`/notes/${folder.id}`)
+                } else {
+                  alert("This folder is empty")
+                }
+              }}
+              style={{
+                cursor:
+                  notes.filter((note) => note.folderId === folder.id).length > 0
+                    ? "pointer"
+                    : "default",
+              }}
+            >
+              {notes.filter((note) => note.folderId === folder.id).length > 0
+                ? `Num of notes: ${
+                    notes.filter((note) => note.folderId === folder.id).length
+                  }`
+                : "Emnty folder"}
             </p>
+
             <button
               className="folderDelete"
               onClick={() => deleteFolder(folder.id)}

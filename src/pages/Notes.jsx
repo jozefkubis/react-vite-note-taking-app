@@ -6,6 +6,8 @@ function Notes() {
   const { notes, setNotes } = useNoteTakingProvider()
   const { noteId } = useParams()
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     const loadLocalStorage = () => {
       const savedNotes = localStorage.getItem("notes")
@@ -20,8 +22,6 @@ function Notes() {
   const filteredNotes = notes.filter(
     (note) => note.folderId === parseInt(noteId)
   )
-
-  const navigate = useNavigate()
 
   function handleClick() {
     navigate("/")

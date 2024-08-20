@@ -21,10 +21,17 @@ function NewNote() {
     (folder) => folder.id === selectedFolder
   )
 
+  console.log(filteredFolders)
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    noteSubmitForm(e)
-    navigate(`/notes/${filteredFolders[0].id}`)
+    if (filteredFolders.length > 0) {
+      noteSubmitForm(e)
+      navigate(`/notes/${filteredFolders[0].id}`)
+    } else {
+      console.error("No folder selected or folders not loaded.")
+      navigate("/")
+    }
   }
 
   return (
