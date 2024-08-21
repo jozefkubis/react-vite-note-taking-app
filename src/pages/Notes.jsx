@@ -23,8 +23,6 @@ function Notes() {
     (folder) => folder.id === parseInt(noteId)
   )
 
-  console.log(filteredFolder.name)
-
   const currentFolderName = filteredFolder
     ? filteredFolder.name
     : "Unknown Folder"
