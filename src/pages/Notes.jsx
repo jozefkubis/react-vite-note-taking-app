@@ -3,7 +3,7 @@ import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
 
 function Notes() {
-  const { notes, setNotes } = useNoteTakingProvider()
+  const { notes, setNotes, folders } = useNoteTakingProvider()
   const { noteId } = useParams()
 
   const navigate = useNavigate()
@@ -18,6 +18,16 @@ function Notes() {
     }
     loadLocalStorage()
   }, [setNotes])
+
+  const filteredFolder = folders.find(
+    (folder) => folder.id === parseInt(noteId)
+  )
+
+  console.log(filteredFolder.name)
+
+  const currentFolderName = filteredFolder
+    ? filteredFolder.name
+    : "Unknown Folder"
 
   const filteredNotes = notes.filter(
     (note) => note.folderId === parseInt(noteId)
@@ -39,6 +49,9 @@ function Notes() {
 
   return (
     <div className="notesDiv">
+      <h3>Current Folder: {currentFolderName}</h3>
+      <br />
+
       <div>
         {filteredNotes.length > 0
           ? filteredNotes.map((note) => (

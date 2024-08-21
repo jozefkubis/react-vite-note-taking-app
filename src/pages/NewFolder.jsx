@@ -8,11 +8,14 @@ function NewFolder() {
 
   const navigate = useNavigate()
 
+  // MARK: Funkcia na posielanie novych kategorii..........................................
   const handleSubmit = (e) => {
     e.preventDefault()
     folderSubmitForm(e)
     navigate("/")
   }
+
+  const capitalisedTitle = useCapitalise(folderTitle)
 
   return (
     <div className="newFolder-container">
@@ -23,7 +26,7 @@ function NewFolder() {
             type="text"
             id="title"
             name="folderTitle"
-            value={useCapitalise(folderTitle)}
+            value={capitalisedTitle}
             onChange={(e) => setFolderTitle(e.target.value)}
           />
         </div>

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise"
+import { useEffect, useState } from "react"
 
 function NewNote() {
   const {
@@ -16,6 +17,22 @@ function NewNote() {
   } = useNoteTakingProvider()
 
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Check if folders are loaded and selectedFolder is set
+    if (folders.length > 0 && selectedFolder !== null) {
+      setIsLoading(false)
+    }
+  }, [folders, selectedFolder])
+
+  const capitalisedTitle = useCapitalise(noteTitle)
+
+  if (isLoading) {
+    return <div>Loading...</div> // Or some other loading indicator
+  }
+
+  console.log(folders)
 
   const filteredFolders = folders.filter(
     (folder) => folder.id === selectedFolder
@@ -43,7 +60,7 @@ function NewNote() {
             type="text"
             id="title"
             name="title"
-            value={useCapitalise(noteTitle)}
+            value={capitalisedTitle}
             onChange={(e) => setNoteTitle(e.target.value)}
           />
         </div>

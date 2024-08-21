@@ -3,11 +3,18 @@ import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
 
 function FolderList() {
-  const { folders, notes, setNotes, setSelectedFolder, setFolders } =
-    useNoteTakingProvider()
+  const {
+    folders,
+    notes,
+    setNotes,
+    setSelectedFolder,
+    setFolders,
+    selectedFolder,
+  } = useNoteTakingProvider()
 
   const navigate = useNavigate()
 
+  // MARK:  useEffect na nacitanie localStorage
   useEffect(() => {
     const loadLocalStorage = () => {
       const savedFolders = localStorage.getItem("folders")
@@ -25,6 +32,9 @@ function FolderList() {
     loadLocalStorage()
   }, [setFolders, setNotes])
 
+  console.log(folders)
+
+  // MARK: funkcia na vymazanie kategorii
   function deleteFolder(id) {
     const newFolders = folders.filter((folder) => folder.id !== id)
     localStorage.setItem("folders", JSON.stringify(newFolders))
@@ -33,6 +43,13 @@ function FolderList() {
     const newNotes = notes.filter((note) => note.folderId !== id)
     localStorage.setItem("notes", JSON.stringify(newNotes))
     setNotes(newNotes)
+
+    console.log(notes)
+
+    if (selectedFolder === id) {
+      localStorage.removeItem("selectedFolder")
+      setSelectedFolder(null)
+    }
   }
 
   return (
@@ -47,6 +64,7 @@ function FolderList() {
                   setSelectedFolder(folder.id)
                   navigate("/newNote")
                 }}
+                style={{ cursor: "pointer" }}
               >
                 ➕
               </span>
@@ -72,12 +90,13 @@ function FolderList() {
                 ? `Num of notes: ${
                     notes.filter((note) => note.folderId === folder.id).length
                   }`
-                : "Emnty folder"}
+                : "Emty folder"}
             </p>
 
             <button
               className="folderDelete"
               onClick={() => deleteFolder(folder.id)}
+              style={{ cursor: "pointer" }}
             >
               ❌
             </button>

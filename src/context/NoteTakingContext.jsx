@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 
 const NoteTakingContext = createContext()
@@ -8,11 +8,43 @@ function NoteTakingProvider({ children }) {
   const [folderName, setFolderName] = useState("")
   const [link, setLink] = useState("")
   const [folders, setFolders] = useState([])
+  const [notes, setNotes] = useState([])
   const [noteTitle, setNoteTitle] = useState("")
   const [noteText, setNoteText] = useState("")
-  const [notes, setNotes] = useState([])
   const [selectedFolder, setSelectedFolder] = useState(null)
 
+  // MARK: FUNKCIE
+
+  // Uloženie selectedFolder do localStorage pri jeho zmene
+  useEffect(() => {
+    if (selectedFolder !== null) {
+      localStorage.setItem("selectedFolder", JSON.stringify(selectedFolder))
+    }
+  }, [selectedFolder])
+
+  // Načítanie selectedFolder z localStorage pri prvom načítaní
+  useEffect(() => {
+    const savedSelectedFolder = localStorage.getItem("selectedFolder")
+    if (savedSelectedFolder) {
+      setSelectedFolder(JSON.parse(savedSelectedFolder))
+    }
+  }, [])
+
+  // Načítanie folders a notes z localStorage pri prvom načítaní
+  useEffect(() => {
+    const savedFolders = localStorage.getItem("folders")
+    const savedNotes = localStorage.getItem("notes")
+
+    if (savedFolders) {
+      setFolders(JSON.parse(savedFolders))
+    }
+
+    if (savedNotes) {
+      setNotes(JSON.parse(savedNotes))
+    }
+  }, [])
+
+  // Príklad funkcií na prácu s forms
   function folderSubmitForm(e) {
     e.preventDefault()
 
@@ -21,7 +53,9 @@ function NoteTakingProvider({ children }) {
       name: folderTitle,
     }
 
-    localStorage.setItem("folders", JSON.stringify([...folders, newFolder]))
+    const updatedFolders = [...folders, newFolder]
+    localStorage.setItem("folders", JSON.stringify(updatedFolders))
+    setFolders(updatedFolders)
     setFolderTitle("")
   }
 
@@ -36,7 +70,9 @@ function NoteTakingProvider({ children }) {
       folderId: selectedFolder,
     }
 
-    localStorage.setItem("notes", JSON.stringify([...notes, newNote]))
+    const updatedNotes = [...notes, newNote]
+    localStorage.setItem("notes", JSON.stringify(updatedNotes))
+    setNotes(updatedNotes)
     setNoteTitle("")
     setNoteText("")
     setLink("")
