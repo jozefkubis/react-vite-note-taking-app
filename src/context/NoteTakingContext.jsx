@@ -61,6 +61,13 @@ function NoteTakingProvider({ children }) {
     setFolderTitle("")
   }
 
+  // Vytvorenie aktualneho datumu
+  const date = new Date().toLocaleDateString("en-EU", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+
   // Funkcia na odoslanie novych poznamok do localStorage
   function noteSubmitForm(e) {
     e.preventDefault()
@@ -70,6 +77,7 @@ function NoteTakingProvider({ children }) {
       name: noteTitle,
       text: noteText,
       link: link,
+      date: date,
       folderId: selectedFolder,
     }
 

@@ -63,6 +63,7 @@ function Notes() {
         {filteredNotes.length > 0
           ? filteredNotes.map((note) => (
               <div key={note.id}>
+                <p>{note.date}</p>
                 <h4>{note.name}</h4>
                 <p>{note.text}</p>
                 <a href={`https://${note.link}`} target="_blank">
