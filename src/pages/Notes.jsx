@@ -20,7 +20,7 @@ function Notes() {
     loadLocalStorage()
   }, [setNotes])
 
-  // MARK: Funkcie
+  // MARK: Funkcie a filtre
 
   // Vyhladanie kategorie pri zhode folder.id a noteId - useParams()
   const filteredFolder = folders.find(
