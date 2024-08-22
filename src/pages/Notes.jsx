@@ -37,12 +37,12 @@ function Notes() {
     (note) => note.folderId === parseInt(noteId)
   )
 
-  // Navigacia
+  // Navigacia na folderList
   function handleClick() {
     navigate("/")
   }
 
-  // Navigacia
+  // Navigacia na newNote
   function clickToNewNote() {
     navigate("/newNote")
   }
