@@ -62,11 +62,16 @@ function NoteTakingProvider({ children }) {
   }
 
   // Vytvorenie aktualneho datumu
-  const date = new Date().toLocaleDateString("en-EU", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
+  // const date = new Date().toLocaleDateString("en-EU")
+
+  const currentDate = new Date()
+  const hour = currentDate.getHours()
+  const minute = currentDate.getMinutes()
+  const day = currentDate.getDate()
+  const month = currentDate.getMonth() + 1
+  const year = currentDate.getFullYear()
+  const time = `${hour}:${minute}`
+  const date = `${day}.${month}.${year}`
 
   // Funkcia na odoslanie novych poznamok do localStorage
   function noteSubmitForm(e) {
@@ -78,6 +83,7 @@ function NoteTakingProvider({ children }) {
       text: noteText,
       link: link,
       date: date,
+      time: time,
       folderId: selectedFolder,
     }
 

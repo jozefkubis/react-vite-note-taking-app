@@ -1,6 +1,8 @@
+import "./Notes.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
+import Button from "../components/Button"
 
 function Notes() {
   const { notes, setNotes, folders } = useNoteTakingProvider()
@@ -63,23 +65,27 @@ function Notes() {
         {filteredNotes.length > 0
           ? filteredNotes.map((note) => (
               <div key={note.id}>
-                <p>{note.date}</p>
+                <div className="noteDateTime">
+                  <p style={{ fontSize: "12px" }}>
+                    {note.date}{" "}
+                    <span style={{ fontSize: "10px" }}>{note.time}</span>
+                  </p>
+                </div>
                 <h4>{note.name}</h4>
                 <p>{note.text}</p>
                 <a href={`https://${note.link}`} target="_blank">
                   {note.link}
                 </a>
-                <button className="noteDelete" onClick={() => noteDelete(note)}>
-                  ❌
-                </button>
+
+                <Button onClick={() => noteDelete(note)}>❌</Button>
               </div>
             ))
           : null}
       </div>
 
-      <button onClick={handleClick}>Back to Folders</button>
+      <Button onClick={handleClick}>Back to Folders</Button>
       <br />
-      <button onClick={clickToNewNote}>New Note</button>
+      <Button onClick={clickToNewNote}>New Note</Button>
     </div>
   )
 }

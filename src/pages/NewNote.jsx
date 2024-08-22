@@ -1,3 +1,4 @@
+import "./NewNote.css"
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise"
@@ -41,7 +42,7 @@ function NewNote() {
   // Funkcia na zapisanie novych poznamok do localStorage - NoteTakingProvider
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (filteredFolders.length > 0) {
+    if (filteredFolders.length > 0 && noteTitle !== "") {
       noteSubmitForm(e)
       navigate(`/notes/${filteredFolders[0].id}`)
     } else {
@@ -53,17 +54,17 @@ function NewNote() {
   return (
     <div className="newFolder-container">
       <form className="form-newFolder" onSubmit={handleSubmit}>
-        <div className="titleDiv">
+        <div className="noteTitleDiv">
           <label htmlFor="noteTitle">New Note Name</label>
           <input
             type="text"
-            id="title"
-            name="title"
+            id="noteTitle"
+            name="noteTitle"
             value={capitalisedTitle}
             onChange={(e) => setNoteTitle(e.target.value)}
           />
         </div>
-        <div className="folderNameDiv">
+        <div className="noteTextDiv">
           <label htmlFor="noteText">Text</label>
           <textarea
             type="text"

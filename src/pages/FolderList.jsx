@@ -1,6 +1,8 @@
+import "./FolderList.css"
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
+import Button from "../components/Button"
 
 function FolderList() {
   const {
@@ -48,23 +50,23 @@ function FolderList() {
     }
   }
 
+  // funkcia pre odkaz na novu poznamku
+  function handleClick(id) {
+    setSelectedFolder(id)
+    navigate("/newNote")
+  }
+
   return (
     <>
       <div>
         {folders.map((folder, index) => (
           <div key={folder.id}>
-            <h4>
-              <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
-              <span
-                onClick={() => {
-                  setSelectedFolder(folder.id) // ulozime id kategorii "folder.id" do selectedFolder
-                  navigate("/newNote")
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                ➕
-              </span>
-            </h4>
+            <div className="folderInfo">
+              <h4>
+                <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
+              </h4>
+              <Button onClick={() => handleClick(folder.id)}>➕</Button>
+            </div>
             <p
               onClick={() => {
                 if (
@@ -89,13 +91,7 @@ function FolderList() {
                 : "Emty folder"}
             </p>
 
-            <button
-              className="folderDelete"
-              onClick={() => deleteFolder(folder.id)}
-              style={{ cursor: "pointer" }}
-            >
-              ❌
-            </button>
+            <Button onClick={() => deleteFolder(folder.id)}>❌</Button>
           </div>
         ))}
       </div>

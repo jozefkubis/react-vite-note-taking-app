@@ -1,0 +1,35 @@
+.noteTitleDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#noteTitle {
+  width: 250px;
+  height: 30px;
+  outline: none;
+}
+
+.noteTextDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#folderName {
+  width: 250px;
+  height: 30px;
+  outline: none;
+}
+
+.linkDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#link {
+  width: 250px;
+  height: 30px;
+  outline: none;
+}

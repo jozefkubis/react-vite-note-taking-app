@@ -1,3 +1,4 @@
+import "./NewFolder.css"
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise" // MARK: Importovanie funkcie na zmenenie velkosti provych pismen
@@ -20,11 +21,11 @@ function NewFolder() {
   return (
     <div className="newFolder-container">
       <form className="form-newFolder" onSubmit={handleSubmit}>
-        <div className="titleDiv">
+        <div className="folderTitleDiv">
           <label htmlFor="folderTitle">New Folder Name</label>
           <input
             type="text"
-            id="title"
+            id="folderTitle"
             name="folderTitle"
             value={capitalisedTitle}
             onChange={(e) => setFolderTitle(e.target.value)}
