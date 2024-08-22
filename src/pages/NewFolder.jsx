@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
-import { useCapitalise } from "../hooks/useCapitalise"
+import { useCapitalise } from "../hooks/useCapitalise" // MARK: Importovanie funkcie na zmenenie velkosti provych pismen
 
 function NewFolder() {
   const { folderSubmitForm, folderTitle, setFolderTitle } =
@@ -8,7 +8,7 @@ function NewFolder() {
 
   const navigate = useNavigate()
 
-  // MARK: Funkcia na posielanie novych kategorii..........................................
+  // MARK: Funkcia na zapisanie novych kategorii do localStorage - NoteTakingProvider
   const handleSubmit = (e) => {
     e.preventDefault()
     folderSubmitForm(e)

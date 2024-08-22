@@ -14,7 +14,7 @@ function FolderList() {
 
   const navigate = useNavigate()
 
-  // MARK:  useEffect na nacitanie localStorage
+  // MARK:  useEffect na nacitanie kategorrii a poznamok z localStorage
   useEffect(() => {
     const loadLocalStorage = () => {
       const savedFolders = localStorage.getItem("folders")
@@ -32,8 +32,6 @@ function FolderList() {
     loadLocalStorage()
   }, [setFolders, setNotes])
 
-  console.log(folders)
-
   // MARK: funkcia na vymazanie kategorii
   function deleteFolder(id) {
     const newFolders = folders.filter((folder) => folder.id !== id)
@@ -43,8 +41,6 @@ function FolderList() {
     const newNotes = notes.filter((note) => note.folderId !== id)
     localStorage.setItem("notes", JSON.stringify(newNotes))
     setNotes(newNotes)
-
-    console.log(notes)
 
     if (selectedFolder === id) {
       localStorage.removeItem("selectedFolder")
@@ -61,7 +57,7 @@ function FolderList() {
               <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
               <span
                 onClick={() => {
-                  setSelectedFolder(folder.id)
+                  setSelectedFolder(folder.id) // ulozime id kategorii "folder.id" do selectedFolder
                   navigate("/newNote")
                 }}
                 style={{ cursor: "pointer" }}

@@ -8,6 +8,7 @@ function Notes() {
 
   const navigate = useNavigate()
 
+  // MARK:  useEffect na nacitanie poznamok z localStorage
   useEffect(() => {
     const loadLocalStorage = () => {
       const savedNotes = localStorage.getItem("notes")
@@ -19,28 +20,34 @@ function Notes() {
     loadLocalStorage()
   }, [setNotes])
 
+  // MARK: Funkcie
+
+  // Vyhladanie kategorie pri zhode folder.id a noteId - useParams()
   const filteredFolder = folders.find(
     (folder) => folder.id === parseInt(noteId)
   )
 
-  console.log(filteredFolder.name)
-
+  // Podmieneny nazov kategorie - filteredFolder.name ulozeny do currentFolderName
   const currentFolderName = filteredFolder
     ? filteredFolder.name
     : "Unknown Folder"
 
+  // Vyfiltrovanie poznamok pri zhode note.folderId a noteId - useParams()
   const filteredNotes = notes.filter(
     (note) => note.folderId === parseInt(noteId)
   )
 
+  // Navigacia
   function handleClick() {
     navigate("/")
   }
 
+  // Navigacia
   function clickToNewNote() {
     navigate("/newNote")
   }
 
+  // Funkcia na vymazanie poznamky
   function noteDelete(note) {
     const newNotes = notes.filter((n) => n.id !== note.id)
     localStorage.setItem("notes", JSON.stringify(newNotes))

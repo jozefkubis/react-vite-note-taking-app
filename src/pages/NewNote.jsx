@@ -19,8 +19,8 @@ function NewNote() {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
 
+  // MARK: useEffects - ak su priecniky nacitane a selectedFolder je nastaveny
   useEffect(() => {
-    // Check if folders are loaded and selectedFolder is set
     if (folders.length > 0 && selectedFolder !== null) {
       setIsLoading(false)
     }
@@ -28,18 +28,17 @@ function NewNote() {
 
   const capitalisedTitle = useCapitalise(noteTitle)
 
+  // isLoading === true ? <div>Loading...</div> : null
   if (isLoading) {
-    return <div>Loading...</div> // Or some other loading indicator
+    return <div>Loading...</div>
   }
 
-  console.log(folders)
-
+  // Vyfiltrovanie priecnikov podla id v selectedFolder a ulozenie do const filteredFolders
   const filteredFolders = folders.filter(
     (folder) => folder.id === selectedFolder
   )
 
-  console.log(filteredFolders)
-
+  // Funkcia na zapisanie novych poznamok do localStorage - NoteTakingProvider
   const handleSubmit = (e) => {
     e.preventDefault()
     if (filteredFolders.length > 0) {

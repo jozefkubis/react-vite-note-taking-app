@@ -13,7 +13,7 @@ function NoteTakingProvider({ children }) {
   const [noteText, setNoteText] = useState("")
   const [selectedFolder, setSelectedFolder] = useState(null)
 
-  // MARK: FUNKCIE
+  // MARK: useEffects..........................................
 
   // Uloženie selectedFolder do localStorage pri jeho zmene
   useEffect(() => {
@@ -44,7 +44,9 @@ function NoteTakingProvider({ children }) {
     }
   }, [])
 
-  // Príklad funkcií na prácu s forms
+  // MARK: Funkcie..........................................
+
+  // Funkcia na odoslanie novych kategorii do localStorage
   function folderSubmitForm(e) {
     e.preventDefault()
 
@@ -59,6 +61,7 @@ function NoteTakingProvider({ children }) {
     setFolderTitle("")
   }
 
+  // Funkcia na odoslanie novych poznamok do localStorage
   function noteSubmitForm(e) {
     e.preventDefault()
 
@@ -106,6 +109,7 @@ function NoteTakingProvider({ children }) {
   )
 }
 
+// MARK: PropTypes - Vlastnosti komponentu NoteTakingProvider
 NoteTakingProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
