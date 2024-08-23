@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise"
 import { useEffect, useState } from "react"
+import NoFolderSelected from "../components/NoFolderSelected"
 
 function NewNote() {
   const {
@@ -29,9 +30,8 @@ function NewNote() {
 
   const capitalisedTitle = useCapitalise(noteTitle)
 
-  // isLoading === true ? <div>Loading...</div> : null
   if (isLoading) {
-    return <div>Loading...</div>
+    return <NoFolderSelected />
   }
 
   // Vyfiltrovanie priecnikov podla id v selectedFolder a ulozenie do const filteredFolders

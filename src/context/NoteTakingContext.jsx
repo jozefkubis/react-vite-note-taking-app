@@ -62,8 +62,6 @@ function NoteTakingProvider({ children }) {
   }
 
   // Vytvorenie aktualneho datumu
-  // const date = new Date().toLocaleDateString("en-EU")
-
   const currentDate = new Date()
   const hour = currentDate.getHours()
   const minute = currentDate.getMinutes()
