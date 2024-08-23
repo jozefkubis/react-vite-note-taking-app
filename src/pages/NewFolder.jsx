@@ -12,8 +12,14 @@ function NewFolder() {
   // MARK: Funkcia na zapisanie novych kategorii do localStorage - NoteTakingProvider
   const handleSubmit = (e) => {
     e.preventDefault()
-    folderSubmitForm(e)
-    navigate("/")
+
+    if (folderTitle !== "") {
+      folderSubmitForm(e)
+      navigate("/")
+    } else {
+      console.error("Missing folder name.")
+      alert("Missing folder name.")
+    }
   }
 
   const capitalisedTitle = useCapitalise(folderTitle)
@@ -32,9 +38,11 @@ function NewFolder() {
           />
         </div>
 
-        <button className="btn" type="submit">
-          Save
-        </button>
+        <div className="btn-div">
+          <button className="btn" type="submit">
+            Save
+          </button>
+        </div>
       </form>
     </div>
   )

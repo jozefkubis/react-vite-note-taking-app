@@ -53,7 +53,7 @@ function NewNote() {
 
   return (
     <div className="newFolder-container">
-      <form className="form-newFolder" onSubmit={handleSubmit}>
+      <form className="form-newNote" onSubmit={handleSubmit}>
         <div className="noteTitleDiv">
           <label htmlFor="noteTitle">New Note Name</label>
           <input
