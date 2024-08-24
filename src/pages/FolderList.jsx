@@ -2,7 +2,9 @@ import "./FolderList.css"
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
-import Button from "../components/Button"
+// import Button from "../components/Button"
+import { IoIosAddCircle } from "react-icons/io"
+import { MdDeleteForever } from "react-icons/md"
 
 function FolderList() {
   const {
@@ -57,15 +59,18 @@ function FolderList() {
   }
 
   return (
-    <>
-      <div>
+    <div className="folderList-container">
+      <div className="folderList">
         {folders.map((folder, index) => (
-          <div key={folder.id}>
+          <div key={folder.id} className="oneFolder">
             <div className="folderInfo">
-              <h4>
+              <h3>
                 <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
-              </h4>
-              <p onClick={() => handleClick(folder.id)}>➕</p>
+              </h3>
+
+              <div>
+                <IoIosAddCircle onClick={() => handleClick(folder.id)} />
+              </div>
             </div>
             <p
               onClick={() => {
@@ -91,11 +96,13 @@ function FolderList() {
                 : "Emty folder"}
             </p>
 
-            <p onClick={() => deleteFolder(folder.id)}>❌</p>
+            <div className="folderDelete">
+              <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
+            </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -11,6 +11,6 @@
 
 .page-nav a {
   text-decoration: none;
-  color: black;
+  color: var(--color-dark--1);
   font-size: 40px;
 }

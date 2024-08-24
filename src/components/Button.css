@@ -6,6 +6,6 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  background-color: rgb(72, 72, 245);
+  background-color: var(--color-dark--1);
   color: white;
 }

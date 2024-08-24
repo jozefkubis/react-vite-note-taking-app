@@ -1,6 +1,12 @@
+:root {
+  --color-background--1: rgb(209, 241, 247);
+  --color-dark--1: rgb(67, 67, 87);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: Commissioner, sans-serif;
+  color: var(--color-dark--1);
 }

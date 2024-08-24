@@ -6,8 +6,11 @@
 
 #noteTitle {
   width: 250px;
-  height: 30px;
+  height: 40px;
   outline: none;
+  border: none;
+  background-color: var(--color-background--1);
+  border-radius: 10px;
 }
 
 .noteTextDiv {
@@ -16,10 +19,22 @@
   margin-bottom: 20px;
 }
 
+#noteText {
+  width: 250px;
+  height: 40px;
+  outline: none;
+  border: none;
+  background-color: var(--color-background--1);
+  border-radius: 10px;
+}
+
 #folderName {
   width: 250px;
-  height: 30px;
+  height: 40px;
   outline: none;
+  border: none;
+  background-color: var(--color-background--1);
+  border-radius: 10px;
 }
 
 .linkDiv {
@@ -30,6 +45,9 @@
 
 #link {
   width: 250px;
-  height: 30px;
+  height: 40px;
   outline: none;
+  border: none;
+  background-color: var(--color-background--1);
+  border-radius: 10px;
 }
