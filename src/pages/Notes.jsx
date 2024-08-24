@@ -77,13 +77,13 @@ function Notes() {
                   {note.link}
                 </a>
 
-                <Button onClick={() => noteDelete(note)}>❌</Button>
+                <p onClick={() => noteDelete(note)}>❌</p>
               </div>
             ))
           : null}
       </div>
 
-      <Button onClick={handleClick}>Back to Folders</Button>
+      <button onClick={handleClick}>Back to Folders</button>
       <br />
       <Button onClick={clickToNewNote}>New Note</Button>
     </div>

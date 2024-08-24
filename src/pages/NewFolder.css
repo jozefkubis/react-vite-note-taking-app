@@ -1,6 +1,6 @@
 .newFolder-container {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 100px;
@@ -8,8 +8,8 @@
 
 .form-newFolder {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-top: 50px;
 }
@@ -23,15 +23,13 @@
 .btn-div {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  margin-left: 10px;
 }
 
 #folderTitle {
   width: 250px;
-  height: 30px;
+  height: 40px;
   outline: none;
   border: none;
-  background-color: rgb(245, 239, 239);
-  border-radius: 5px;
+  background-color: rgb(201, 216, 241);
+  border-radius: 10px;
 }

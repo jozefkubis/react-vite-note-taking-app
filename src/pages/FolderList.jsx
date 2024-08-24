@@ -65,7 +65,7 @@ function FolderList() {
               <h4>
                 <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
               </h4>
-              <Button onClick={() => handleClick(folder.id)}>➕</Button>
+              <p onClick={() => handleClick(folder.id)}>➕</p>
             </div>
             <p
               onClick={() => {
@@ -91,7 +91,7 @@ function FolderList() {
                 : "Emty folder"}
             </p>
 
-            <Button onClick={() => deleteFolder(folder.id)}>❌</Button>
+            <p onClick={() => deleteFolder(folder.id)}>❌</p>
           </div>
         ))}
       </div>
