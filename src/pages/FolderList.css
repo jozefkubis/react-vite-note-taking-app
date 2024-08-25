@@ -6,7 +6,7 @@
 }
 
 .folderList {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;

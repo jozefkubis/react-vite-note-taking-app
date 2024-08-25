@@ -11,6 +11,7 @@
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
+  padding: 10px;
 }
 
 .noteTextDiv {
@@ -26,6 +27,7 @@
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
+  padding: 10px;
 }
 
 #folderName {
@@ -35,6 +37,7 @@
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
+  padding: 10px;
 }
 
 .linkDiv {
@@ -50,4 +53,5 @@
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
+  padding: 10px;
 }

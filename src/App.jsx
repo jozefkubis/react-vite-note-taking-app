@@ -11,9 +11,9 @@ function App() {
         <Route index element={<FolderList />} />
         <Route path="/newFolder" element={<NewFolder />} />
         <Route path="/newNote" element={<NewNote />} />
-        <Route path="/notes/:noteId" element={<Notes />} />
         <Route path="*" element={<div>404</div>} />
       </Route>
+      <Route path="/notes/:noteId" element={<Notes />} />
     </Routes>
   )
 }

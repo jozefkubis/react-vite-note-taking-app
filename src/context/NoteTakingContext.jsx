@@ -68,7 +68,7 @@ function NoteTakingProvider({ children }) {
   const day = currentDate.getDate()
   const month = currentDate.getMonth() + 1
   const year = currentDate.getFullYear()
-  const time = `${hour}:${minute}`
+  const time = `${hour}:${minute < 10 ? "0" + minute : minute}`
   const date = `${day}.${month}.${year}`
 
   // Funkcia na odoslanie novych poznamok do localStorage
