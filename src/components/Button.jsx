@@ -1,9 +1,9 @@
 import PropTypes from "prop-types"
 import "./Button.css"
 
-function Button({ children, onClick }) {
+function Button({ children }) {
   return (
-    <button className="btn" onClick={onClick} style={{ cursor: "pointer" }}>
+    <button className="btn" style={{ cursor: "pointer" }} type="submit">
       {children}
     </button>
   )
@@ -11,7 +11,6 @@ function Button({ children, onClick }) {
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
 }
 
 export default Button

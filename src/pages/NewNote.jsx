@@ -4,6 +4,7 @@ import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise"
 import { useEffect, useState } from "react"
 import NoFolderSelected from "../components/NoFolderSelected"
+import Button from "../components/Button"
 
 function NewNote() {
   const {
@@ -47,7 +48,7 @@ function NewNote() {
       navigate(`/notes/${filteredFolders[0].id}`)
     } else {
       console.error("No folder selected or folders not loaded.")
-      navigate("/")
+      alert("Fill in all fields.")
     }
   }
 
@@ -85,9 +86,8 @@ function NewNote() {
             onChange={(e) => setLink(e.target.value)}
           />
         </div>
-        <button className="btn" type="submit">
-          Save
-        </button>
+
+        <Button type="submit">Save</Button>
       </form>
     </div>
   )

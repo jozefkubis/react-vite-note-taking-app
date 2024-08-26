@@ -2,8 +2,8 @@ import "./Notes.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
-import Button from "../components/Button"
 import { IoIosClose } from "react-icons/io"
+import { IoIosAddCircle } from "react-icons/io"
 
 function Notes() {
   const { notes, setNotes, folders } = useNoteTakingProvider()
@@ -54,7 +54,10 @@ function Notes() {
 
   return (
     <div className="notes-container">
-      <h3>Current Folder: {currentFolderName}</h3>
+      <div className="notes-name-add">
+        <h2>{currentFolderName} Notes</h2>
+        <IoIosAddCircle onClick={clickToNewNote} style={{ fontSize: "30px" }} />
+      </div>
       <br />
 
       <div className="oneNoteDiv">
@@ -77,8 +80,6 @@ function Notes() {
             ))
           : null}
       </div>
-
-      <Button onClick={clickToNewNote}>New Note</Button>
     </div>
   )
 }
