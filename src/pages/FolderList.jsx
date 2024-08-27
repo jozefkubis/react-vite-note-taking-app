@@ -30,7 +30,7 @@ function FolderList() {
         // Ak v folderoch nie je backgroundColor, nastavíme ho na defaultnú hodnotu
         const updatedFolders = parsedFolders.map((folder) => ({
           ...folder,
-          backgroundColor: folder.backgroundColor || "rgb(231, 231, 145)", // alebo iná defaultná farba
+          backgroundColor: folder.backgroundColor || "rgb(231, 231, 145)",
         }))
         setFolders(updatedFolders)
       }
@@ -43,6 +43,7 @@ function FolderList() {
     loadLocalStorage()
   }, [setFolders, setNotes])
 
+  // Funkci na aktualizaciu farby kategorii
   function changeFolderColor(id, color) {
     const updatedFolders = folders.map((folder) =>
       folder.id === id ? { ...folder, backgroundColor: color } : folder
