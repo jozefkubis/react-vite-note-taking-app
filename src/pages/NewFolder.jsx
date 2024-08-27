@@ -3,11 +3,16 @@ import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise"
 import Button from "../components/Button"
-import { FaCircle } from "react-icons/fa6"
+// import { FaCircle } from "react-icons/fa6"
 
 function NewFolder() {
-  const { folderSubmitForm, folderTitle, setFolderTitle } =
-    useNoteTakingProvider()
+  const {
+    folderSubmitForm,
+    folderTitle,
+    setFolderTitle,
+    // setBackgroundColor,
+    // backgroundColor,
+  } = useNoteTakingProvider()
 
   const navigate = useNavigate()
 
@@ -26,30 +31,8 @@ function NewFolder() {
 
   const capitalisedTitle = useCapitalise(folderTitle)
 
-  function handleClick(color) {
-    document.querySelector("#folderTitle").style.backgroundColor = color
-  }
-
   return (
     <div className="newFolder-container">
-      <div className="colorsFolder">
-        <FaCircle
-          onClick={() => handleClick("var(--color-background--1)")}
-          style={{ fill: "var(--color-background--1)" }}
-        />
-        <FaCircle
-          onClick={() => handleClick("var(--color-background--2)")}
-          style={{ fill: "var(--color-background--2)" }}
-        />
-        <FaCircle
-          onClick={() => handleClick("var(--color-background--3)")}
-          style={{ fill: "var(--color-background--3)" }}
-        />
-        <FaCircle
-          onClick={() => handleClick("var(--color-background--4)")}
-          style={{ fill: "var(--color-background--4)" }}
-        />
-      </div>
       <form className="form-newFolder" onSubmit={handleSubmit}>
         <div className="folderTitleDiv">
           <label htmlFor="folderTitle">New Folder Name</label>

@@ -5,6 +5,7 @@ import { useEffect } from "react"
 // import Button from "../components/Button"
 import { IoIosAddCircle } from "react-icons/io"
 import { MdDeleteForever } from "react-icons/md"
+import { FaCircle } from "react-icons/fa6"
 
 function FolderList() {
   const {
@@ -25,7 +26,13 @@ function FolderList() {
       const savedNotes = localStorage.getItem("notes")
 
       if (savedFolders) {
-        setFolders(JSON.parse(savedFolders))
+        const parsedFolders = JSON.parse(savedFolders)
+        // Ak v folderoch nie je backgroundColor, nastavíme ho na defaultnú hodnotu
+        const updatedFolders = parsedFolders.map((folder) => ({
+          ...folder,
+          backgroundColor: folder.backgroundColor || "rgb(231, 231, 145)", // alebo iná defaultná farba
+        }))
+        setFolders(updatedFolders)
       }
 
       if (savedNotes) {
@@ -35,6 +42,14 @@ function FolderList() {
 
     loadLocalStorage()
   }, [setFolders, setNotes])
+
+  function changeFolderColor(id, color) {
+    const updatedFolders = folders.map((folder) =>
+      folder.id === id ? { ...folder, backgroundColor: color } : folder
+    )
+    setFolders(updatedFolders)
+    localStorage.setItem("folders", JSON.stringify(updatedFolders))
+  }
 
   // MARK: funkcia na vymazanie kategorii
   function deleteFolder(id) {
@@ -62,7 +77,40 @@ function FolderList() {
     <div className="folderList-container">
       <div className="folderList">
         {folders.map((folder, index) => (
-          <div key={folder.id} className="oneFolder">
+          <div
+            key={folder.id}
+            className="oneFolder"
+            style={{
+              backgroundColor: folder.backgroundColor,
+              cursor: "pointer",
+            }}
+          >
+            <div>
+              <FaCircle
+                style={{ fill: "var(--color-background--1)" }}
+                onClick={() =>
+                  changeFolderColor(folder.id, "var(--color-background--1)")
+                }
+              />
+              <FaCircle
+                style={{ fill: "var(--color-background--2)" }}
+                onClick={() =>
+                  changeFolderColor(folder.id, "var(--color-background--2)")
+                }
+              />
+              <FaCircle
+                style={{ fill: "var(--color-background--3)" }}
+                onClick={() =>
+                  changeFolderColor(folder.id, "var(--color-background--3)")
+                }
+              />
+              <FaCircle
+                style={{ fill: "var(--color-background--4)" }}
+                onClick={() =>
+                  changeFolderColor(folder.id, "var(--color-background--4)")
+                }
+              />
+            </div>
             <div className="folderInfo">
               <h3>
                 <span className="folderNumber">{index + 1}.</span> {folder.name}{" "}
@@ -93,9 +141,8 @@ function FolderList() {
                 ? `Num of notes: ${
                     notes.filter((note) => note.folderId === folder.id).length
                   }`
-                : "Emty folder"}
+                : "Empty folder"}
             </p>
-
             <div className="folderDelete">
               <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
             </div>
