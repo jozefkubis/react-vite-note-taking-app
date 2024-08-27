@@ -86,41 +86,45 @@ function Notes() {
                   cursor: "pointer",
                 }}
               >
-                <div>
-                  <FaCircle
-                    style={{ fill: "var(--color-background--1)" }}
-                    onClick={() =>
-                      changeNoteColor(note.id, "var(--color-background--1)")
-                    }
-                  />
-                  <FaCircle
-                    style={{ fill: "var(--color-background--2)" }}
-                    onClick={() =>
-                      changeNoteColor(note.id, "var(--color-background--2)")
-                    }
-                  />
-                  <FaCircle
-                    style={{ fill: "var(--color-background--3)" }}
-                    onClick={() =>
-                      changeNoteColor(note.id, "var(--color-background--3)")
-                    }
-                  />
-                  <FaCircle
-                    style={{ fill: "var(--color-background--4)" }}
-                    onClick={() =>
-                      changeNoteColor(note.id, "var(--color-background--4)")
-                    }
-                  />
+                <div className="noteHeader">
+                  <div className="noteColors">
+                    <FaCircle
+                      style={{ fill: "var(--color-background--1)" }}
+                      onClick={() =>
+                        changeNoteColor(note.id, "var(--color-background--1)")
+                      }
+                    />
+                    <FaCircle
+                      style={{ fill: "var(--color-background--2)" }}
+                      onClick={() =>
+                        changeNoteColor(note.id, "var(--color-background--2)")
+                      }
+                    />
+                    <FaCircle
+                      style={{ fill: "var(--color-background--3)" }}
+                      onClick={() =>
+                        changeNoteColor(note.id, "var(--color-background--3)")
+                      }
+                    />
+                    <FaCircle
+                      style={{ fill: "var(--color-background--4)" }}
+                      onClick={() =>
+                        changeNoteColor(note.id, "var(--color-background--4)")
+                      }
+                    />
+                  </div>
+                  <div className="noteCloseCross">
+                    <IoIosClose onClick={() => noteDelete(note)} />
+                  </div>
                 </div>
                 <div className="noteDateTime">
                   <p style={{ fontSize: "11px" }}>
                     {note.date}{" "}
                     <span style={{ fontSize: "10px" }}>{note.time}</span>
                   </p>
-                  <IoIosClose onClick={() => noteDelete(note)} />
                 </div>
-                <h4>{note.name}</h4>
-                <p>{note.text}</p>
+                <h4 className="noteName">{note.name}</h4>
+                <p className="noteText">{note.text}</p>
                 <a href={`https://${note.link}`} target="_blank">
                   {note.link}
                 </a>

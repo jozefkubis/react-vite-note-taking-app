@@ -1,3 +1,10 @@
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .notes-name-add {
   display: flex;
   justify-content: center;
@@ -14,10 +21,11 @@
 .oneNoteDiv {
   display: flex;
   flex-wrap: wrap;
+  max-width: 80%;
 }
 
 .oneNote {
-  width: 250px;
+  max-width: 250px;
   height: auto;
   margin: 10px;
   background-color: var(--color-background--1);
@@ -25,15 +33,35 @@
   padding: 10px;
 }
 
+.noteHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.noteColors svg {
+  margin-right: 5px;
+}
+
 .noteDateTime {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
-.noteDateTime svg {
-  cursor: pointer;
-  font-weight: bolder;
-  width: 20px;
-  height: 20px;
+.noteName {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.noteText {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.oneNote a {
+  text-decoration: none;
+  color: var(--color-dark--1);
   font-weight: bold;
+  font-size: 13px;
 }

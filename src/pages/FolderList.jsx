@@ -86,7 +86,7 @@ function FolderList() {
               cursor: "pointer",
             }}
           >
-            <div>
+            <div className="folderColors">
               <FaCircle
                 style={{ fill: "var(--color-background--1)" }}
                 onClick={() =>
