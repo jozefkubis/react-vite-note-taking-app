@@ -4,6 +4,7 @@ import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useEffect } from "react"
 import { IoIosClose } from "react-icons/io"
 import { IoIosAddCircle } from "react-icons/io"
+import { FaCircle } from "react-icons/fa6"
 
 function Notes() {
   const { notes, setNotes, folders } = useNoteTakingProvider()
@@ -17,11 +18,25 @@ function Notes() {
       const savedNotes = localStorage.getItem("notes")
 
       if (savedNotes) {
-        setNotes(JSON.parse(savedNotes))
+        const parsedNotes = JSON.parse(savedNotes)
+        const updatedNotes = parsedNotes.map((note) => ({
+          ...note,
+          backgroundColor: note.backgroundColor || "rgb(231, 231, 145)",
+        }))
+
+        setNotes(updatedNotes)
       }
     }
     loadLocalStorage()
   }, [setNotes])
+
+  function changeNoteColor(id, color) {
+    const updatedNotes = notes.map((note) =>
+      note.id === id ? { ...note, backgroundColor: color } : note
+    )
+    setNotes(updatedNotes)
+    localStorage.setItem("notes", JSON.stringify(updatedNotes))
+  }
 
   // MARK: Funkcie a filtre
 
@@ -63,7 +78,40 @@ function Notes() {
       <div className="oneNoteDiv">
         {filteredNotes.length > 0
           ? filteredNotes.map((note) => (
-              <div key={note.id} className="oneNote">
+              <div
+                key={note.id}
+                className="oneNote"
+                style={{
+                  backgroundColor: note.backgroundColor,
+                  cursor: "pointer",
+                }}
+              >
+                <div>
+                  <FaCircle
+                    style={{ fill: "var(--color-background--1)" }}
+                    onClick={() =>
+                      changeNoteColor(note.id, "var(--color-background--1)")
+                    }
+                  />
+                  <FaCircle
+                    style={{ fill: "var(--color-background--2)" }}
+                    onClick={() =>
+                      changeNoteColor(note.id, "var(--color-background--2)")
+                    }
+                  />
+                  <FaCircle
+                    style={{ fill: "var(--color-background--3)" }}
+                    onClick={() =>
+                      changeNoteColor(note.id, "var(--color-background--3)")
+                    }
+                  />
+                  <FaCircle
+                    style={{ fill: "var(--color-background--4)" }}
+                    onClick={() =>
+                      changeNoteColor(note.id, "var(--color-background--4)")
+                    }
+                  />
+                </div>
                 <div className="noteDateTime">
                   <p style={{ fontSize: "11px" }}>
                     {note.date}{" "}
