@@ -10,10 +10,16 @@ import { FaCircle } from "react-icons/fa6"
 function FolderList() {
   const { folders, setFolders, setNotes, setSelectedFolder, notes } =
     useNoteTakingProvider()
+
   const navigate = useNavigate()
+
+  // MARK: Funkcie
+
   useLocalStorage(setFolders, setNotes)
+
   const { deleteFolder } = useDeleteFolder()
 
+  // funkcia na zmenenie farby kategorii
   const changeFolderColor = (id, color) => {
     const updatedFolders = folders.map((folder) =>
       folder.id === id ? { ...folder, backgroundColor: color } : folder
