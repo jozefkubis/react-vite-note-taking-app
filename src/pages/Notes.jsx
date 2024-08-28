@@ -1,7 +1,6 @@
 import "./Notes.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
-import { useEffect } from "react"
 import { IoIosClose } from "react-icons/io"
 import { IoIosAddCircle } from "react-icons/io"
 import { FaCircle } from "react-icons/fa6"
