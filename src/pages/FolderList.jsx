@@ -13,10 +13,12 @@ function FolderList() {
 
   const navigate = useNavigate()
 
-  // MARK: Funkcie
-
+  // MARK: useEffect na nacitanie poznamok z localStorage
   useLocalStorage(setFolders, setNotes)
 
+  // MARK: Funkcie
+
+  // funkcia na vymazanie kategorii
   const { deleteFolder } = useDeleteFolder()
 
   // funkcia na zmenenie farby kategorii

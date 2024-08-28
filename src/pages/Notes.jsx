@@ -5,30 +5,39 @@ import { useEffect } from "react"
 import { IoIosClose } from "react-icons/io"
 import { IoIosAddCircle } from "react-icons/io"
 import { FaCircle } from "react-icons/fa6"
+import { useLocalStorage } from "../hooks/useLocalStorage"
+import { useDeleteNote } from "../hooks/useDeleteNote"
 
 function Notes() {
-  const { notes, setNotes, folders } = useNoteTakingProvider()
+  const { notes, setNotes, folders, setFolders } = useNoteTakingProvider()
+
+  // MARK:  useParams()
   const { noteId } = useParams()
 
   const navigate = useNavigate()
 
   // MARK:  useEffect na nacitanie poznamok z localStorage
-  useEffect(() => {
-    const loadLocalStorage = () => {
-      const savedNotes = localStorage.getItem("notes")
+  // useEffect(() => {
+  //   const loadLocalStorage = () => {
+  //     const savedNotes = localStorage.getItem("notes")
 
-      if (savedNotes) {
-        const parsedNotes = JSON.parse(savedNotes)
-        const updatedNotes = parsedNotes.map((note) => ({
-          ...note,
-          backgroundColor: note.backgroundColor || "rgb(231, 231, 145)",
-        }))
+  //     if (savedNotes) {
+  //       const parsedNotes = JSON.parse(savedNotes)
+  //       const updatedNotes = parsedNotes.map((note) => ({
+  //         ...note,
+  //         backgroundColor: note.backgroundColor || "rgb(231, 231, 145)",
+  //       }))
 
-        setNotes(updatedNotes)
-      }
-    }
-    loadLocalStorage()
-  }, [setNotes])
+  //       setNotes(updatedNotes)
+  //     }
+  //   }
+  //   loadLocalStorage()
+  // }, [setNotes])
+
+  // MARK: useEffect na nacitanie kategorii z localStorage
+  useLocalStorage(setFolders, setNotes)
+
+  // MARK: Funkcie a filtre
 
   function changeNoteColor(id, color) {
     const updatedNotes = notes.map((note) =>
@@ -37,8 +46,6 @@ function Notes() {
     setNotes(updatedNotes)
     localStorage.setItem("notes", JSON.stringify(updatedNotes))
   }
-
-  // MARK: Funkcie a filtre
 
   // Vyhladanie kategorie pri zhode folder.id a noteId - useParams()
   const filteredFolder = folders.find(
@@ -61,11 +68,14 @@ function Notes() {
   }
 
   // Funkcia na vymazanie poznamky
-  function noteDelete(note) {
-    const newNotes = notes.filter((n) => n.id !== note.id)
-    localStorage.setItem("notes", JSON.stringify(newNotes))
-    setNotes(newNotes)
-  }
+
+  // function noteDelete(note) {
+  //   const newNotes = notes.filter((n) => n.id !== note.id)
+  //   localStorage.setItem("notes", JSON.stringify(newNotes))
+  //   setNotes(newNotes)
+  // }
+
+  const { noteDelete } = useDeleteNote()
 
   return (
     <div className="notes-container">
@@ -114,7 +124,7 @@ function Notes() {
                     />
                   </div>
                   <div className="noteCloseCross">
-                    <IoIosClose onClick={() => noteDelete(note)} />
+                    <IoIosClose onClick={() => noteDelete(note.id)} />
                   </div>
                 </div>
                 <div className="noteDateTime">
