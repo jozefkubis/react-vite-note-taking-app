@@ -15,25 +15,7 @@ function Notes() {
 
   const navigate = useNavigate()
 
-  // MARK:  useEffect na nacitanie poznamok z localStorage
-  // useEffect(() => {
-  //   const loadLocalStorage = () => {
-  //     const savedNotes = localStorage.getItem("notes")
-
-  //     if (savedNotes) {
-  //       const parsedNotes = JSON.parse(savedNotes)
-  //       const updatedNotes = parsedNotes.map((note) => ({
-  //         ...note,
-  //         backgroundColor: note.backgroundColor || "rgb(231, 231, 145)",
-  //       }))
-
-  //       setNotes(updatedNotes)
-  //     }
-  //   }
-  //   loadLocalStorage()
-  // }, [setNotes])
-
-  // MARK: useEffect na nacitanie kategorii z localStorage
+  // MARK: useEffect na nacitanie poznamok z localStorage
   useLocalStorage(setFolders, setNotes)
 
   // MARK: Funkcie a filtre
@@ -67,13 +49,6 @@ function Notes() {
   }
 
   // Funkcia na vymazanie poznamky
-
-  // function noteDelete(note) {
-  //   const newNotes = notes.filter((n) => n.id !== note.id)
-  //   localStorage.setItem("notes", JSON.stringify(newNotes))
-  //   setNotes(newNotes)
-  // }
-
   const { noteDelete } = useDeleteNote()
 
   return (

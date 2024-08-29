@@ -21,7 +21,6 @@
   align-items: flex-start;
   justify-content: space-evenly;
   width: 100%;
-  background-color: var(--color-background--1);
   border-radius: 10px;
   padding: 10px;
 }
@@ -45,8 +44,8 @@
 
 .folderInfo div svg {
   cursor: pointer;
-  width: 1, 5rem;
-  height: 1, 5rem;
+  width: 1.5rem;
+  height: auto;
 }
 
 .folderNumber {
@@ -61,4 +60,6 @@
 
 .folderDelete svg {
   cursor: pointer;
+  width: 1.5rem;
+  height: auto;
 }

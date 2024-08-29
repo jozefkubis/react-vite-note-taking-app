@@ -13,3 +13,22 @@
   font-family: Commissioner, sans-serif;
   color: var(--color-dark--1);
 }
+
+body {
+  background-image: url(./pictures/img1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.appLayout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.layout {
+  /* height: 100vh; */
+  background: rgba(255, 255, 255, 0.253);
+}

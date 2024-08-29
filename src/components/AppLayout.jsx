@@ -4,9 +4,11 @@ import { Outlet } from "react-router-dom"
 
 function AppLayout() {
   return (
-    <div className="AppLayout">
+    <div className="appLayout">
       <PageNav />
-      <Outlet />
+      <div className="layout">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   )

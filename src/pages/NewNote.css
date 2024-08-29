@@ -1,3 +1,7 @@
+.form-newNote label {
+  margin-left: 10px;
+}
+
 .noteTitleDiv {
   display: flex;
   flex-direction: column;

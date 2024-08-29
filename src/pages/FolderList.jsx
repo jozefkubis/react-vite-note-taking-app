@@ -92,7 +92,9 @@ function FolderList() {
                   }`
                 : "Empty folder"}
             </p>
-            <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
+            <div className="folderDelete">
+              <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
+            </div>
           </div>
         ))}
       </div>

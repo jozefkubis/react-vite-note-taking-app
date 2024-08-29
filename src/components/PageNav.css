@@ -1,10 +1,14 @@
+.page-nav {
+  background-color: var(--color-dark--1);
+  opacity: 0.9;
+}
+
 .page-nav ul {
   display: flex;
   justify-content: center;
   gap: 20px;
   align-items: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding: 50px;
   font-size: 20px;
   font-weight: bold;
   list-style: none;
@@ -17,8 +21,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: aliceblue;
 }
 
 .page-nav a svg {
+  fill: aliceblue;
   cursor: pointer;
 }

@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react"
 import PropTypes from "prop-types"
+import { useLocalStorage } from "../hooks/useLocalStorage"
 
 const NoteTakingContext = createContext()
 
@@ -31,18 +32,7 @@ function NoteTakingProvider({ children }) {
   }, [])
 
   // Načítanie folders a notes z localStorage pri prvom načítaní
-  useEffect(() => {
-    const savedFolders = localStorage.getItem("folders")
-    const savedNotes = localStorage.getItem("notes")
-
-    if (savedFolders) {
-      setFolders(JSON.parse(savedFolders))
-    }
-
-    if (savedNotes) {
-      setNotes(JSON.parse(savedNotes))
-    }
-  }, [])
+  useLocalStorage(setFolders, setNotes)
 
   // MARK: Funkcie..........................................
 
