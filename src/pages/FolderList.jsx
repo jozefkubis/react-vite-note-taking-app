@@ -48,70 +48,77 @@ function FolderList() {
   return (
     <div className="folderList-container">
       <div className="folderList">
-        {folders.map((folder, index) => (
-          <div
-            key={folder.id}
-            className="oneFolder"
-            style={{
-              backgroundColor: folder.backgroundColor,
-              cursor: "pointer",
-            }}
-            // MARK: Drag and Drop
-            draggable
-            onDragStart={() => handleDragStart(index)}
-            onDragEnter={() => handleDragEnter(index)}
-            onDragEnd={handleDragEnd}
-          >
-            <div className="folderColors">
-              {[
-                "var(--color-background--1)",
-                "var(--color-background--2)",
-                "var(--color-background--3)",
-                "var(--color-background--4)",
-              ].map((color) => (
-                <FaCircle
-                  key={color}
-                  style={{ fill: color }}
-                  onClick={() => changeFolderColor(folder.id, color)}
-                />
-              ))}
-            </div>
-            <div className="folderInfo">
-              <h3>
-                <span className="folderNumber">{index + 1}.</span> {folder.name}
-              </h3>
-              <div>
-                <IoIosAddCircle onClick={() => handleClick(folder.id)} />
+        {folders.length === 0 ? (
+          <h1 className="createFolder">🖋 Create Folder to continue...</h1>
+        ) : (
+          folders.map((folder, index) => (
+            <div
+              key={folder.id}
+              className="oneFolder"
+              style={{
+                backgroundColor: folder.backgroundColor,
+                cursor: "pointer",
+              }}
+              // MARK: Drag and Drop
+              draggable
+              onDragStart={() => handleDragStart(index)}
+              onDragEnter={() => handleDragEnter(index)}
+              onDragEnd={handleDragEnd}
+            >
+              <div className="folderColors">
+                {[
+                  "var(--color-background--1)",
+                  "var(--color-background--2)",
+                  "var(--color-background--3)",
+                  "var(--color-background--4)",
+                ].map((color) => (
+                  <FaCircle
+                    key={color}
+                    style={{ fill: color }}
+                    onClick={() => changeFolderColor(folder.id, color)}
+                  />
+                ))}
+              </div>
+              <div className="folderInfo">
+                <h3>
+                  <span className="folderNumber">{index + 1}.</span>{" "}
+                  {folder.name}
+                </h3>
+                <div>
+                  <IoIosAddCircle onClick={() => handleClick(folder.id)} />
+                </div>
+              </div>
+              <p
+                onClick={() => {
+                  if (
+                    notes.filter((note) => note.folderId === folder.id).length >
+                    0
+                  ) {
+                    navigate(`/notes/${folder.id}`)
+                  } else {
+                    alert("This folder is empty")
+                  }
+                }}
+                style={{
+                  cursor:
+                    notes.filter((note) => note.folderId === folder.id).length >
+                    0
+                      ? "pointer"
+                      : "default",
+                }}
+              >
+                {notes.filter((note) => note.folderId === folder.id).length > 0
+                  ? `Num of notes: ${
+                      notes.filter((note) => note.folderId === folder.id).length
+                    }`
+                  : "Empty folder"}
+              </p>
+              <div className="folderDelete">
+                <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
               </div>
             </div>
-            <p
-              onClick={() => {
-                if (
-                  notes.filter((note) => note.folderId === folder.id).length > 0
-                ) {
-                  navigate(`/notes/${folder.id}`)
-                } else {
-                  alert("This folder is empty")
-                }
-              }}
-              style={{
-                cursor:
-                  notes.filter((note) => note.folderId === folder.id).length > 0
-                    ? "pointer"
-                    : "default",
-              }}
-            >
-              {notes.filter((note) => note.folderId === folder.id).length > 0
-                ? `Num of notes: ${
-                    notes.filter((note) => note.folderId === folder.id).length
-                  }`
-                : "Empty folder"}
-            </p>
-            <div className="folderDelete">
-              <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   )

@@ -56,7 +56,7 @@ function NewNote() {
     <div className="newNote-container">
       <form className="form-newNote" onSubmit={handleSubmit}>
         <div className="noteTitleDiv">
-          <label htmlFor="noteTitle">New Note Name</label>
+          <label htmlFor="noteTitle">Note Name</label>
           <input
             type="text"
             id="noteTitle"
@@ -73,7 +73,7 @@ function NewNote() {
             name="noteText"
             value={noteText}
             onChange={(e) => setNoteText(e.target.value)}
-            maxLength={100}
+            maxLength={200}
           />
         </div>
         <div className="linkDiv">

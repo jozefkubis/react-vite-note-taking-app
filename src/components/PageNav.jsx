@@ -7,7 +7,7 @@ export const PageNav = () => {
     <nav className="page-nav">
       <ul>
         <li>
-          <NavLink to="/">Folders</NavLink>
+          <NavLink to="/">📁 Folders</NavLink>
         </li>
         <li>
           <NavLink to="/newFolder">

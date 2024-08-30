@@ -36,6 +36,7 @@
   background-color: var(--color-background--1);
   border-radius: 12px;
   padding: 10px;
+  overflow: hidden;
 }
 
 .noteHeader {

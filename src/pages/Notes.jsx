@@ -61,7 +61,7 @@ function Notes() {
   return (
     <div className="notes-container">
       <div className="notes-name-add">
-        <h2>{currentFolderName} Notes</h2>
+        <h2>{currentFolderName} 📝 Notes</h2>
         <IoIosAddCircle onClick={clickToNewNote} style={{ fontSize: "30px" }} />
       </div>
       <br />
@@ -70,8 +70,8 @@ function Notes() {
         {filteredNotes.length > 0
           ? filteredNotes.map((note, index) => (
               <div
-                key={note.id}
                 className="oneNote"
+                key={note.id}
                 style={{
                   backgroundColor: note.backgroundColor,
                   cursor: "pointer",
