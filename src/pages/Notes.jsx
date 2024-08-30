@@ -95,7 +95,7 @@ function Notes() {
                     <span style={{ fontSize: "10px" }}>{note.time}</span>
                   </p>
                 </div>
-                <h4 className="noteName">{note.name}</h4>
+                <h3 className="noteName">{note.name}</h3>
                 <p className="noteText">{note.text}</p>
                 <a href={`https://${note.link}`} target="_blank">
                   {note.link}

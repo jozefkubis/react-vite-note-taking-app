@@ -14,8 +14,13 @@
   gap: 10px;
 }
 
+.notes-name-add h2 {
+  color: white;
+}
+
 .notes-name-add svg {
   cursor: pointer;
+  fill: white;
 }
 
 .oneNoteDiv {
@@ -25,7 +30,7 @@
 }
 
 .oneNote {
-  max-width: 250px;
+  max-width: 300px;
   height: auto;
   margin: 10px;
   background-color: var(--color-background--1);
@@ -55,7 +60,7 @@
 }
 
 .noteText {
-  font-size: 13px;
+  font-size: 1rem;
   margin-bottom: 5px;
 }
 
@@ -63,5 +68,5 @@
   text-decoration: none;
   color: var(--color-dark--1);
   font-weight: bold;
-  font-size: 13px;
+  font-size: 1rem;
 }

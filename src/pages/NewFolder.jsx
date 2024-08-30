@@ -31,7 +31,7 @@ function NewFolder() {
         <div className="folderTitleDiv">
           <label htmlFor="folderTitle">New Folder Name</label>
           <input
-            type="text"
+            type="search"
             id="folderTitle"
             name="folderTitle"
             value={capitalisedTitle}
