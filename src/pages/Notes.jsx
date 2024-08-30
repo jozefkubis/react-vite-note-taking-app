@@ -6,20 +6,20 @@ import { IoIosAddCircle } from "react-icons/io"
 import { FaCircle } from "react-icons/fa6"
 import { useLocalStorage } from "../hooks/useLocalStorage"
 import { useDeleteNote } from "../hooks/useDeleteNote"
+import { useState } from "react"
 
 function Notes() {
   const { notes, setNotes, folders, setFolders } = useNoteTakingProvider()
-
-  // MARK:  useParams()
   const { noteId } = useParams()
-
   const navigate = useNavigate()
+  const [dragging, setDragging] = useState(null)
 
   // MARK: useEffect na nacitanie poznamok z localStorage
   useLocalStorage(setFolders, setNotes)
 
-  // MARK: Funkcie a filtre
+  // MARK: Funkcie
 
+  // funkcia na vymazanie poznamky
   function changeNoteColor(id, color) {
     const updatedNotes = notes.map((note) =>
       note.id === id ? { ...note, backgroundColor: color } : note
@@ -51,6 +51,36 @@ function Notes() {
   // Funkcia na vymazanie poznamky
   const { noteDelete } = useDeleteNote()
 
+  // MARK: Drag and Drop------------------------------------------------------------------------------
+  const handleDragStart = (e, index) => {
+    setDragging(index)
+    e.dataTransfer.effectAllowed = "move"
+  }
+
+  // Handle Drag Enter
+  const handleDragEnter = (e, index) => {
+    // const draggedOverItem = filteredNotes[index]
+
+    if (dragging === index) return
+
+    let items = [...filteredNotes]
+    items.splice(dragging, 1)
+    items.splice(index, 0, filteredNotes[dragging])
+
+    setDragging(index)
+    setNotes(items)
+  }
+
+  // Handle Drag End - Ulozenie zmien do localStorage
+  const handleDragEnd = () => {
+    setDragging(null)
+
+    // uozenie zmeneneho poradia do localStorage
+    localStorage.setItem("notes", JSON.stringify(notes))
+  }
+
+  //   MARK:--------------------------------------------------------------------------------------------
+
   return (
     <div className="notes-container">
       <div className="notes-name-add">
@@ -61,7 +91,7 @@ function Notes() {
 
       <div className="oneNoteDiv">
         {filteredNotes.length > 0
-          ? filteredNotes.map((note) => (
+          ? filteredNotes.map((note, index) => (
               <div
                 key={note.id}
                 className="oneNote"
@@ -69,6 +99,11 @@ function Notes() {
                   backgroundColor: note.backgroundColor,
                   cursor: "pointer",
                 }}
+                // MARK: Drag and Drop
+                draggable
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragEnter={(e) => handleDragEnter(e, index)}
+                onDragEnd={handleDragEnd}
               >
                 <div className="noteHeader">
                   <div className="noteColors">
