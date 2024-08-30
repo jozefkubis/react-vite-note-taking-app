@@ -15,7 +15,7 @@
 }
 
 body {
-  background-image: url(./pictures/img1.jpg);
+  background-image: url(./pictures/img2.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -29,6 +29,5 @@ body {
 }
 
 .layout {
-  /* height: 100vh; */
-  background: rgba(39, 40, 67, 0.422);
+  background: linear-gradient(180deg, #12b88667 27%, #4dabf751 74%);
 }

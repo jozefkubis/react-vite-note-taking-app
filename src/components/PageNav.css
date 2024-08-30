@@ -1,6 +1,7 @@
 .page-nav {
-  background-color: var(--color-dark--1);
+  /* background-color: var(--color-dark--1); */
   opacity: 0.9;
+  border-radius: 10px;
 }
 
 .page-nav ul {

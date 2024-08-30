@@ -30,13 +30,14 @@
 }
 
 .oneNote {
-  max-width: 300px;
+  max-width: 350px;
   height: auto;
   margin: 10px;
   background-color: var(--color-background--1);
   border-radius: 12px;
   padding: 10px;
-  overflow: hidden;
+  overflow: auto;
+  flex: 1 1 auto;
 }
 
 .noteHeader {
@@ -63,6 +64,12 @@
 .noteText {
   font-size: 1rem;
   margin-bottom: 5px;
+}
+
+.oneNote p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  word-wrap: break-word;
 }
 
 .oneNote a {
