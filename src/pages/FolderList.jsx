@@ -6,6 +6,7 @@ import { useDeleteFolder } from "../hooks/useDeleteFolder"
 import { IoIosAddCircle } from "react-icons/io"
 import { MdDeleteForever } from "react-icons/md"
 import { FaCircle } from "react-icons/fa6"
+import useDragAndDrop from "../hooks/useDragAndDrop"
 
 function FolderList() {
   const { folders, setFolders, setNotes, setSelectedFolder, notes } =
@@ -30,10 +31,19 @@ function FolderList() {
     localStorage.setItem("folders", JSON.stringify(updatedFolders))
   }
 
+  // funkcia na kliknutie na kategoriu
   const handleClick = (id) => {
     setSelectedFolder(id)
     navigate("/newNote")
   }
+
+  // MARK: Drag and Drop------------------------------------------------------------------------------
+  const { handleDragStart, handleDragEnter, handleDragEnd } = useDragAndDrop(
+    folders,
+    setFolders,
+    "folders"
+  )
+  // MARK:--------------------------------------------------------------------------------------------
 
   return (
     <div className="folderList-container">
@@ -46,6 +56,11 @@ function FolderList() {
               backgroundColor: folder.backgroundColor,
               cursor: "pointer",
             }}
+            // MARK: Drag and Drop
+            draggable
+            onDragStart={() => handleDragStart(index)}
+            onDragEnter={() => handleDragEnter(index)}
+            onDragEnd={handleDragEnd}
           >
             <div className="folderColors">
               {[

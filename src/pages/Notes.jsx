@@ -6,13 +6,12 @@ import { IoIosAddCircle } from "react-icons/io"
 import { FaCircle } from "react-icons/fa6"
 import { useLocalStorage } from "../hooks/useLocalStorage"
 import { useDeleteNote } from "../hooks/useDeleteNote"
-import { useState } from "react"
+import useDragAndDrop from "../hooks/useDragAndDrop"
 
 function Notes() {
   const { notes, setNotes, folders, setFolders } = useNoteTakingProvider()
   const { noteId } = useParams()
   const navigate = useNavigate()
-  const [dragging, setDragging] = useState(null)
 
   // MARK: useEffect na nacitanie poznamok z localStorage
   useLocalStorage(setFolders, setNotes)
@@ -52,34 +51,12 @@ function Notes() {
   const { noteDelete } = useDeleteNote()
 
   // MARK: Drag and Drop------------------------------------------------------------------------------
-  const handleDragStart = (e, index) => {
-    setDragging(index)
-    e.dataTransfer.effectAllowed = "move"
-  }
-
-  // Handle Drag Enter
-  const handleDragEnter = (e, index) => {
-    // const draggedOverItem = filteredNotes[index]
-
-    if (dragging === index) return
-
-    let items = [...filteredNotes]
-    items.splice(dragging, 1)
-    items.splice(index, 0, filteredNotes[dragging])
-
-    setDragging(index)
-    setNotes(items)
-  }
-
-  // Handle Drag End - Ulozenie zmien do localStorage
-  const handleDragEnd = () => {
-    setDragging(null)
-
-    // uozenie zmeneneho poradia do localStorage
-    localStorage.setItem("notes", JSON.stringify(notes))
-  }
-
-  //   MARK:--------------------------------------------------------------------------------------------
+  const { handleDragStart, handleDragEnter, handleDragEnd } = useDragAndDrop(
+    filteredNotes,
+    setNotes,
+    "notes"
+  )
+  // MARK:--------------------------------------------------------------------------------------------
 
   return (
     <div className="notes-container">
@@ -101,8 +78,8 @@ function Notes() {
                 }}
                 // MARK: Drag and Drop
                 draggable
-                onDragStart={(e) => handleDragStart(e, index)}
-                onDragEnter={(e) => handleDragEnter(e, index)}
+                onDragStart={() => handleDragStart(index)}
+                onDragEnter={() => handleDragEnter(index)}
                 onDragEnd={handleDragEnd}
               >
                 <div className="noteHeader">
