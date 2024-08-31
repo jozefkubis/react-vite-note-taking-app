@@ -28,6 +28,6 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
-.layout {
+/* .layout {
   background: linear-gradient(180deg, #12b88667 27%, #4dabf751 74%);
-}
+} */
