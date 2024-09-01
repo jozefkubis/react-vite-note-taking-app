@@ -80,10 +80,10 @@ function FolderList() {
                 ))}
               </div>
               <div className="folderInfo">
-                <h3>
+                <h4>
                   <span className="folderNumber">{index + 1}.</span>{" "}
                   {folder.name}
-                </h3>
+                </h4>
                 <div>
                   <IoIosAddCircle onClick={() => handleClick(folder.id)} />
                 </div>

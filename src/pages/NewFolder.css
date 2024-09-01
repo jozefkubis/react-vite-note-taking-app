@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  /* margin-top: 50px; */
 }
 
-.colorsFolder {
+/* .colorsFolder {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .colorsFolder svg {
   margin-left: 10px;
@@ -40,20 +40,20 @@
 }
 
 #folderTitle {
-  width: 400px;
-  height: 70px;
+  width: 300px;
+  height: 40px;
   outline: none;
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bolder;
 }
 
 .btn-div Button {
-  height: 5rem;
-  width: 5rem;
-  font-size: 1.5rem;
+  height: 4rem;
+  width: 4rem;
+  font-size: 1rem;
   font-weight: bolder;
 }

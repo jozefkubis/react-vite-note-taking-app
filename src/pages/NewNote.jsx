@@ -73,7 +73,7 @@ function NewNote() {
             name="noteText"
             value={noteText}
             onChange={(e) => setNoteText(e.target.value)}
-            maxLength={200}
+            maxLength={150}
           />
         </div>
         <div className="linkDiv">

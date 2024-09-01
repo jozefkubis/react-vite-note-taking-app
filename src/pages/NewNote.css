@@ -11,7 +11,7 @@
 
 .form-newNote label {
   margin-left: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bolder;
   color: white;
 }
@@ -23,14 +23,14 @@
 }
 
 #noteTitle {
-  width: 400px;
-  height: 70px;
+  width: 300px;
+  height: 40px;
   outline: none;
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .noteTextDiv {
@@ -40,26 +40,16 @@
 }
 
 #noteText {
-  width: 400px;
-  height: 70px;
+  width: 300px;
+  height: 60px;
   outline: none;
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  overflow: hidden;
 }
-
-/* #folderName {
-  width: 400px;
-  height: 70px;
-  outline: none;
-  border: none;
-  background-color: var(--color-background--1);
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 1.5rem;
-} */
 
 .linkDiv {
   display: flex;
@@ -68,19 +58,19 @@
 }
 
 #link {
-  width: 400px;
-  height: 70px;
+  width: 300px;
+  height: 40px;
   outline: none;
   border: none;
   background-color: var(--color-background--1);
   border-radius: 10px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .form-newNote Button {
-  height: 5rem;
-  width: 5rem;
-  font-size: 1.5rem;
+  height: 4rem;
+  width: 4rem;
+  font-size: 1rem;
   font-weight: bolder;
 }
