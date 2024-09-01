@@ -4,7 +4,7 @@ import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useLocalStorage } from "../hooks/useLocalStorage"
 import { useDeleteFolder } from "../hooks/useDeleteFolder"
 import { IoIosAddCircle } from "react-icons/io"
-import { MdDeleteForever } from "react-icons/md"
+import { IoIosClose } from "react-icons/io"
 import { FaCircle } from "react-icons/fa6"
 import useDragAndDrop from "../hooks/useDragAndDrop"
 
@@ -65,19 +65,25 @@ function FolderList() {
               onDragEnter={() => handleDragEnter(index)}
               onDragEnd={handleDragEnd}
             >
-              <div className="folderColors">
-                {[
-                  "var(--color-background--1)",
-                  "var(--color-background--2)",
-                  "var(--color-background--3)",
-                  "var(--color-background--4)",
-                ].map((color) => (
-                  <FaCircle
-                    key={color}
-                    style={{ fill: color }}
-                    onClick={() => changeFolderColor(folder.id, color)}
-                  />
-                ))}
+              <div className="folderTop">
+                <div className="folderColors">
+                  {[
+                    "var(--color-background--1)",
+                    "var(--color-background--2)",
+                    "var(--color-background--3)",
+                    "var(--color-background--4)",
+                  ].map((color) => (
+                    <FaCircle
+                      key={color}
+                      style={{ fill: color }}
+                      onClick={() => changeFolderColor(folder.id, color)}
+                    />
+                  ))}
+                </div>
+
+                <div className="folderDelete">
+                  <IoIosClose onClick={() => deleteFolder(folder.id)} />
+                </div>
               </div>
               <div className="folderInfo">
                 <h4>
@@ -113,9 +119,6 @@ function FolderList() {
                     }`
                   : "Empty folder"}
               </p>
-              <div className="folderDelete">
-                <MdDeleteForever onClick={() => deleteFolder(folder.id)} />
-              </div>
             </div>
           ))
         )}
