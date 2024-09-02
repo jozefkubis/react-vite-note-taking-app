@@ -9,8 +9,17 @@ import { useDeleteNote } from "../hooks/useDeleteNote"
 import useDragAndDrop from "../hooks/useDragAndDrop"
 
 function Notes() {
-  const { notes, setNotes, folders, setFolders } = useNoteTakingProvider()
+  const {
+    notes,
+    setNotes,
+    folders,
+    setFolders,
+    searchQuery,
+    notesAfterSearch,
+  } = useNoteTakingProvider()
+
   const { noteId } = useParams()
+
   const navigate = useNavigate()
 
   // MARK: useEffect na nacitanie poznamok z localStorage
@@ -58,6 +67,8 @@ function Notes() {
   )
   // MARK:--------------------------------------------------------------------------------------------
 
+  const notesToShow = searchQuery ? notesAfterSearch : filteredNotes
+
   return (
     <div className="notes-container">
       <div className="notes-name-add">
@@ -67,8 +78,8 @@ function Notes() {
       <br />
 
       <div className="oneNoteDiv">
-        {filteredNotes.length > 0
-          ? filteredNotes.map((note, index) => (
+        {notesToShow.length > 0
+          ? notesToShow.map((note, index) => (
               <div
                 className="oneNote"
                 key={note.id}

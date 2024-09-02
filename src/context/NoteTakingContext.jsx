@@ -16,6 +16,7 @@ function NoteTakingProvider({ children }) {
   const [selectedFolder, setSelectedFolder] = useState(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [filteredFolders, setFilteredFolders] = useState([])
+  const [notesAfterSearch, setNotesAfterSearch] = useState([])
 
   // MARK: useEffects..........................................
 
@@ -59,10 +60,16 @@ function NoteTakingProvider({ children }) {
 
     setSearchQuery(e.target.value)
 
-    const filtered = folders.filter((folder) =>
+    const filterFolder = folders.filter((folder) =>
       folder.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
-    setFilteredFolders(filtered)
+
+    const filterNote = notes.filter((note) =>
+      note.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+
+    setFilteredFolders(filterFolder)
+    setNotesAfterSearch(filterNote)
   }
 
   // Vytvorenie aktualneho datumu
@@ -119,8 +126,10 @@ function NoteTakingProvider({ children }) {
         selectedFolder,
         setSelectedFolder,
         filteredFolders,
+        notesAfterSearch,
         handleChangeSearch,
         searchQuery,
+        setSearchQuery,
       }}
     >
       {children}

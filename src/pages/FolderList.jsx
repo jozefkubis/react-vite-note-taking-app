@@ -17,9 +17,12 @@ function FolderList() {
     notes,
     filteredFolders,
     searchQuery,
+    setSearchQuery,
   } = useNoteTakingProvider()
 
   const navigate = useNavigate()
+
+  const foldersToShow = searchQuery ? filteredFolders : folders
 
   // MARK: useEffect na nacitanie poznamok z localStorage
   useLocalStorage(setFolders, setNotes)
@@ -52,7 +55,7 @@ function FolderList() {
   )
   // MARK:--------------------------------------------------------------------------------------------
 
-  const foldersToShow = searchQuery ? filteredFolders : folders
+  // const foldersToShow = searchQuery ? filteredFolders : folders
 
   return (
     <div className="folderList-container">
@@ -110,6 +113,7 @@ function FolderList() {
                     0
                   ) {
                     navigate(`/notes/${folder.id}`)
+                    setSearchQuery("")
                   } else {
                     alert("This folder is empty")
                   }
