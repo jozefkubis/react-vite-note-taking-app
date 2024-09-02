@@ -9,8 +9,15 @@ import { FaCircle } from "react-icons/fa6"
 import useDragAndDrop from "../hooks/useDragAndDrop"
 
 function FolderList() {
-  const { folders, setFolders, setNotes, setSelectedFolder, notes } =
-    useNoteTakingProvider()
+  const {
+    folders,
+    setFolders,
+    setNotes,
+    setSelectedFolder,
+    notes,
+    filteredFolders,
+    searchQuery,
+  } = useNoteTakingProvider()
 
   const navigate = useNavigate()
 
@@ -45,13 +52,15 @@ function FolderList() {
   )
   // MARK:--------------------------------------------------------------------------------------------
 
+  const foldersToShow = searchQuery ? filteredFolders : folders
+
   return (
     <div className="folderList-container">
       <div className="folderList">
         {folders.length === 0 ? (
           <h1 className="createFolder">🖋 Create Folder to continue...</h1>
         ) : (
-          folders.map((folder, index) => (
+          foldersToShow.map((folder, index) => (
             <div
               key={folder.id}
               className="oneFolder"

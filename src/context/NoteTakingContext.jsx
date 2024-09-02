@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useLocalStorage } from "../hooks/useLocalStorage"
+// import { BsHandbagFill } from "react-icons/bs"
 
 const NoteTakingContext = createContext()
 
@@ -13,6 +14,8 @@ function NoteTakingProvider({ children }) {
   const [noteTitle, setNoteTitle] = useState("")
   const [noteText, setNoteText] = useState("")
   const [selectedFolder, setSelectedFolder] = useState(null)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [filteredFolders, setFilteredFolders] = useState([])
 
   // MARK: useEffects..........................................
 
@@ -49,6 +52,17 @@ function NoteTakingProvider({ children }) {
     localStorage.setItem("folders", JSON.stringify(updatedFolders))
     setFolders(updatedFolders)
     setFolderTitle("")
+  }
+
+  function handleChangeSearch(e) {
+    e.preventDefault()
+
+    setSearchQuery(e.target.value)
+
+    const filtered = folders.filter((folder) =>
+      folder.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    setFilteredFolders(filtered)
   }
 
   // Vytvorenie aktualneho datumu
@@ -104,6 +118,9 @@ function NoteTakingProvider({ children }) {
         noteSubmitForm,
         selectedFolder,
         setSelectedFolder,
+        filteredFolders,
+        handleChangeSearch,
+        searchQuery,
       }}
     >
       {children}
