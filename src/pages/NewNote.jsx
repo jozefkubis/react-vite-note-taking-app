@@ -20,20 +20,20 @@ function NewNote() {
   } = useNoteTakingProvider()
 
   const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(true)
+  // const [isLoading, setIsLoading] = useState(true)
 
   // MARK: useEffects - ak su priecniky nacitane a selectedFolder je nastaveny
-  useEffect(() => {
-    if (folders.length > 0 && selectedFolder !== null) {
-      setIsLoading(false)
-    }
-  }, [folders, selectedFolder])
+  // useEffect(() => {
+  //   if (folders.length > 0 && selectedFolder !== null) {
+  //     setIsLoading(false)
+  //   }
+  // }, [folders, selectedFolder])
 
   const capitalisedTitle = useCapitalise(noteTitle)
 
-  if (isLoading) {
-    return <NoFolderSelected />
-  }
+  // if (isLoading) {
+  //   return <NoFolderSelected />
+  // }
 
   // Vyfiltrovanie priecnikov podla id v selectedFolder a ulozenie do const filteredFolders
   const filteredFolders = folders.filter(
