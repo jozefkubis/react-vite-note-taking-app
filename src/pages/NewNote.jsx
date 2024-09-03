@@ -2,8 +2,8 @@ import "./NewNote.css"
 import { useNavigate } from "react-router-dom"
 import { useNoteTakingProvider } from "../context/useNoteTakingProvider"
 import { useCapitalise } from "../hooks/useCapitalise"
-import { useEffect, useState } from "react"
-import NoFolderSelected from "../components/NoFolderSelected"
+// import { useEffect, useState } from "react"
+// import NoFolderSelected from "../components/NoFolderSelected"
 import Button from "../components/Button"
 
 function NewNote() {
