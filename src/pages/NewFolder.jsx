@@ -14,13 +14,8 @@ function NewFolder() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (folderTitle !== "") {
-      folderSubmitForm(e)
-      navigate("/")
-    } else {
-      console.error("Missing folder name.")
-      alert("Missing folder name.")
-    }
+    folderSubmitForm(e)
+    navigate("/")
   }
 
   const capitalisedTitle = useCapitalise(folderTitle)
@@ -36,6 +31,7 @@ function NewFolder() {
             name="folderTitle"
             value={capitalisedTitle}
             onChange={(e) => setFolderTitle(e.target.value)}
+            required
           />
         </div>
 

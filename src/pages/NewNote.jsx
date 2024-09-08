@@ -43,13 +43,8 @@ function NewNote() {
   // Funkcia na zapisanie novych poznamok do localStorage - NoteTakingProvider
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (filteredFolders.length > 0 && noteTitle !== "") {
-      noteSubmitForm(e)
-      navigate(`/notes/${filteredFolders[0].id}`)
-    } else {
-      console.error("No folder selected or folders not loaded.")
-      alert("Fill in all fields.")
-    }
+    noteSubmitForm(e)
+    navigate(`/notes/${filteredFolders[0].id}`)
   }
 
   return (
@@ -63,6 +58,7 @@ function NewNote() {
             name="noteTitle"
             value={capitalisedTitle}
             onChange={(e) => setNoteTitle(e.target.value)}
+            required
           />
         </div>
         <div className="noteTextDiv">
@@ -74,6 +70,7 @@ function NewNote() {
             value={noteText}
             onChange={(e) => setNoteText(e.target.value)}
             maxLength={150}
+            required
           />
         </div>
         <div className="linkDiv">
